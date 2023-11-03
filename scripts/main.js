@@ -15,20 +15,21 @@ document.body.appendChild( renderer.domElement );
 
 //Addding a cube
 
-const geometry = new THREE.BoxGeometry( 1, 1, 1 ); //Defines Points, Vertices, Faces
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true} ); //Material for the cube
-const cube = new THREE.Mesh( geometry, material ); //Actual mesh object that connects the geometry and gives a material look to it
-scene.add(cube); //Adding the cube to the scene
+const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 ); //Defines Points, Vertices, Faces. etc
+const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true} ); //Material for the cube
+const donut = new THREE.Mesh( geometry, material ); //Actual mesh object that connects the geometry and gives a material look to it
+scene.add(donut); //Adding the cube to the scene
 
-camera.position.z = 6; //Prevents the camera and the cube spawning in one another, moves the camera up
+camera.position.z = 30; //Prevents the camera and the cube spawning in one another, moves the camera up
 
 // Render/Animate loop (Called normally 60 times per second)
 function animate() {
 	requestAnimationFrame( animate );
     //Add anything here to do stuff to box before rendering
 	// Rotate the cube
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.01;
+	donut.rotation.x += 0.01;
+	donut.rotation.y += 0.005;
+	donut.rotation.z += 0.01;
 	renderer.render( scene, camera );
 }
 
