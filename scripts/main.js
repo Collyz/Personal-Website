@@ -13,23 +13,21 @@ document.body.appendChild( renderer.domElement );
 //GLTF Loader
 //const loader = new GLTFLoader();
 
-//Addding a cube
-
+//Addding a torus
 const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 ); //Defines Points, Vertices, Faces. etc
-const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true} ); //Material for the cube
+const material = new THREE.MeshBasicMaterial( { color: 0xFF6347} ); //Material for the torus
 const donut = new THREE.Mesh( geometry, material ); //Actual mesh object that connects the geometry and gives a material look to it
-scene.add(donut); //Adding the cube to the scene
+scene.add(donut); //Adding the torus to the scene
 
-camera.position.z = 30; //Prevents the camera and the cube spawning in one another, moves the camera up
+camera.position.z = 30; //Prevents the camera and the torus spawning in one another, moves the camera up
 
 // Render/Animate loop (Called normally 60 times per second)
 function animate() {
 	requestAnimationFrame( animate );
     //Add anything here to do stuff to box before rendering
-	// Rotate the cube
+	// Rotate the torus
 	donut.rotation.x += 0.01;
-	donut.rotation.y += 0.005;
-	donut.rotation.z += 0.01;
+	donut.rotation.y += 0.01;
 	renderer.render( scene, camera );
 }
 
