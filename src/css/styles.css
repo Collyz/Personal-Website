@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    background-color: #EFE2BA;
+}
+
+.div-color1{
+    background-color: #EFE2BA;
+}
+
+.colors{
+    height: fit-content;
+    color: #F13C20;
+    color: #4056A1;
+    color: #C5CBE3;
+}
+
+.headings{
+    color: #F13C20;
+}
+
+#info{
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display: block;
+}
