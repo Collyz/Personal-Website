@@ -17,10 +17,9 @@ camera.position.setZ(30); //Prevents the camera and the torus spawning in one an
 const loader = new GLTFLoader();
 loader.load(
 	//resource url
-	'/Models/delauney_reverse.glb',
+	'/assets/delauney_reverse_color.glb',
 	//called when the resource is loaded
 	function( gltf ){
-
 		scene.add( gltf.scene );
 
 		gltf.animations; // Array<THREE.AnimationClip>
@@ -30,37 +29,35 @@ loader.load(
 		gltf.asset; // Object
 
 	},
-	// called while loading is progressing
+	// Called while loading is progressing
 	function ( xhr ) {
-
 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
 	},
-	// called when loading has errors
+	// Called when loading has errors
 	function ( error ) {
-
 		console.log( 'An error happened' );
-
 	}
 );
-//Addding a torus
-const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 ); //Defines Points, Vertices, Faces. etc
-const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} ); //Material for the torus
-const donut = new THREE.Mesh( geometry, material ); //Actual mesh object that connects the geometry and gives a material look to it
-scene.add(donut); //Adding the torus to the scene
 
-//Adding a light
-const pointLight = new THREE.PointLight(0xffffff);
+
+//Addding a torus
+const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );                //Defines Points, Vertices, Faces. etc
+const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} );     //Material for the torus
+const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
+//scene.add(donut);                                                          //Adding the torus to the scene
+
+//Lights
+const pointLight = new THREE.PointLight(0xffffff);                // Fixed-point lightbulb
 pointLight.position.set(0, 0, 0)
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.0000);
-scene.add(pointLight, ambientLight);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.0000);    // Universal light
+scene.add(pointLight);                                            // Removed ambient light
 
-const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+const lightHelper = new THREE.PointLightHelper(pointLight);       // Show location for fixed-point light
+const gridHelper = new THREE.GridHelper(200, 50);                 // Show grid
+scene.add(lightHelper);                               // Removed gridHelper
 
-const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);  // Orbit controls
 
 
 
@@ -69,12 +66,11 @@ const controls = new OrbitControls(camera, renderer.domElement);
 function animate() {
 	requestAnimationFrame( animate );
     //Add anything here to do stuff to box before rendering
-	// Rotate the torus
-	donut.rotation.x += 0.01;
-	donut.rotation.y += 0.01;
+	donut.rotation.x += 0.01;                                  // Rotate torus x
+	donut.rotation.y += 0.01;                                  // Rotate torus y
 
-	controls.update();
-	renderer.render( scene, camera );
+	controls.update();                                         // Update oribital controls
+	renderer.render( scene, camera );                          // Update renderer
 }
 
 animate();
