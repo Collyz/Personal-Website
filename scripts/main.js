@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-// Setting the Scene, Camera, and Renderer
+// Setting the SCENE, CAMERA, and RENDERER
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -43,37 +43,43 @@ loader.load(
 );
 
 
-//Addding a torus
+// TORUS
 const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );                //Defines Points, Vertices, Faces. etc
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} );     //Material for the torus
 const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
-//scene.add(donut);                                                          //Adding the torus to the scene
+//scene.add(donut);                                                        //Adding the torus to the scene
 
-//Lights
-const pointLight = new THREE.PointLight(0xffffff, 1300);                // Fixed-point lightbulb
-pointLight.position.set(0, 20, 0)
+// LIGHTS
+// Fixed-point lightbulb
+const pointLight1 = new THREE.PointLight(0xffffff, 1300);                   
+const pointLight2 = new THREE.PointLight(0xffffff, 1300);
+pointLight1.position.set(0, 20, 0);
+pointLight2.position.set(0, -20, 0);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.0000);    // Universal light
-scene.add(pointLight);                                            // Removed ambient light
+const temp = new THREE.DirectionalLight(0xffffff, );
+const tempHelper = new THREE.DirectionalLightHelper(temp);
+scene.add(temp, tempHelper);
 
-const lightHelper = new THREE.PointLightHelper(pointLight);       // Show location for fixed-point light
-const gridHelper = new THREE.GridHelper(200, 50);                 // Show grid
-scene.add(lightHelper);                               // Removed gridHelper
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.0000);             // Universal light
+scene.add(pointLight1, pointLight2);                                       // Removed ambient light
 
-const controls = new OrbitControls(camera, renderer.domElement);  // Orbit controls
+const lightHelper1 = new THREE.PointLightHelper(pointLight1);               // Show location for fixed-point light
+const lightHelper2 = new THREE.PointLightHelper(pointLight2);
+const gridHelper = new THREE.GridHelper(200, 50);                          // Show grid
+scene.add(lightHelper1, lightHelper2);                                                    // Removed gridHelper
 
-
+const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
 
 
 // Render/Animate loop (Called normally 60 times per second)
 function animate() {
 	requestAnimationFrame( animate );
     //Add anything here to do stuff to box before rendering
-	donut.rotation.x += 0.01;                                  // Rotate torus x
-	donut.rotation.y += 0.01;                                  // Rotate torus y
+	donut.rotation.x += 0.01;                                             // Rotate torus x
+	donut.rotation.y += 0.01;                                             // Rotate torus y
 
-	controls.update();                                         // Update oribital controls
-	renderer.render( scene, camera );                          // Update renderer
+	controls.update();                                                    // Update oribital controls
+	renderer.render( scene, camera );                                     // Update renderer
 }
 
 animate();
