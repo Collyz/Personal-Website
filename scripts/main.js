@@ -10,7 +10,10 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
-camera.position.setZ(30); //Prevents the camera and the torus spawning in one another, moves the camera up
+
+//Positioning the camera appropriately
+camera.position.setZ(60); 
+camera.position.setY(20);
 
 
 //GLTF Loader
@@ -47,8 +50,8 @@ const donut = new THREE.Mesh( geometry, material );                        //Act
 //scene.add(donut);                                                          //Adding the torus to the scene
 
 //Lights
-const pointLight = new THREE.PointLight(0xffffff);                // Fixed-point lightbulb
-pointLight.position.set(0, 0, 0)
+const pointLight = new THREE.PointLight(0xffffff, 1300);                // Fixed-point lightbulb
+pointLight.position.set(0, 20, 0)
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.0000);    // Universal light
 scene.add(pointLight);                                            // Removed ambient light
