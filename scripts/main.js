@@ -1,24 +1,26 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 
-// Setting the SCENE, CAMERA, and RENDERER
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+// INSTANTIATIONS
+const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
+const renderer = new THREE.WebGLRenderer();                                                                // RENDERER
+const gltfloader = new GLTFLoader();                                                                       // GLTF Loader
+//const textLoader = new TextLoader();
 
-const renderer = new THREE.WebGLRenderer();
+// Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setSize( window.innerWidth, window.innerHeight);
 document.body.appendChild( renderer.domElement );
+// Camera pos
+camera.position.set(-20, 30, 70);
+// Scene background
+scene.background = new THREE.Color(0xAFE2BA);
 
-//Positioning the camera appropriately
-camera.position.setZ(60); 
-camera.position.setY(20);
-
-
-//GLTF Loader
-const loader = new GLTFLoader();
-loader.load(
+// GLTF (Lake Model) import and creation
+gltfloader.load(
 	//resource url
 	'/assets/delauney_reverse_color.glb',
 	//called when the resource is loaded
@@ -43,31 +45,28 @@ loader.load(
 );
 
 
+
+
 // TORUS
 const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );                //Defines Points, Vertices, Faces. etc
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} );     //Material for the torus
 const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
-//scene.add(donut);                                                        //Adding the torus to the scene
+scene.add(donut);                                                          //Adding the torus to the scene
+
 
 // LIGHTS
-// Fixed-point lightbulb
-const pointLight1 = new THREE.PointLight(0xffffff, 1300);                   
-const pointLight2 = new THREE.PointLight(0xffffff, 1300);
-pointLight1.position.set(0, 20, 0);
-pointLight2.position.set(0, -20, 0);
+const directionalLight1 = new THREE.DirectionalLight(0xffffff, .5);
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, .5);
+// LIGHTS POSITION
+directionalLight1.position.set(0, 20, 0);
+directionalLight2.position.set(0, -20, 0);
+// LIGHT HELPERS
+const directionalLightHelper1 = new THREE.DirectionalLightHelper(directionalLight1);
+const directionalLightHelper2 = new THREE.DirectionalLightHelper(directionalLight2);
+scene.add(directionalLight1, directionalLight2, directionalLightHelper1, directionalLightHelper2);
 
-const temp = new THREE.DirectionalLight(0xffffff, );
-const tempHelper = new THREE.DirectionalLightHelper(temp);
-scene.add(temp, tempHelper);
-
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.0000);             // Universal light
-scene.add(pointLight1, pointLight2);                                       // Removed ambient light
-
-const lightHelper1 = new THREE.PointLightHelper(pointLight1);               // Show location for fixed-point light
-const lightHelper2 = new THREE.PointLightHelper(pointLight2);
-const gridHelper = new THREE.GridHelper(200, 50);                          // Show grid
-scene.add(lightHelper1, lightHelper2);                                                    // Removed gridHelper
-
+// GRID HELPER (To view grid for positional reasons)
+const gridHelper = new THREE.GridHelper(200, 50);
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
 
 
