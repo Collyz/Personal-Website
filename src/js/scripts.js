@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 // INSTANTIATIONS
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
-const camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
 const renderer = new THREE.WebGLRenderer();                                                                // RENDERER
 const gltfloader = new GLTFLoader();                                                                       // GLTF Loader
 //const textLoader = new TextLoader();
@@ -19,10 +19,14 @@ camera.position.set(0, 30, 70);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
+// URL needed for parcel to identify location of file
+url = new URL ('/src/assets/lake.glb', import.meta.url);
+url = "" + url;
+
 // GLTF (Lake Model) import and creation
 gltfloader.load(
 	//resource url
-	'./assets/delauney_reverse_color.glb',
+	url,
 	//called when the resource is loaded
 	function( gltf ){
 		scene.add( gltf.scene );
