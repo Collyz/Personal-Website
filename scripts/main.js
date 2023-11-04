@@ -53,7 +53,7 @@ scene.add(donut); //Adding the torus to the scene
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(0, 0, 0)
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 10.0000);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.0000);
 scene.add(pointLight, ambientLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
