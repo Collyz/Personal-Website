@@ -20,7 +20,7 @@ camera.position.set(0, 30, 70);
 scene.background = new THREE.Color(0xAFE2BA);
 
 // URL needed for parcel to identify location of file
-url = new URL ('../assets/lake.glb', import.meta.url);
+url = new URL ('../../lake.glb', import.meta.url);
 url = "" + url;
 
 // GLTF (Lake Model) import and creation
