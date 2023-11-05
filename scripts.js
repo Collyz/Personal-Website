@@ -14,7 +14,7 @@ renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize( window.innerWidth, window.innerHeight);
 document.body.appendChild( renderer.domElement );
 // Camera pos
-camera.position.set(0, 30, 70);
+camera.position.set(-50, 40, 100);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
@@ -25,13 +25,6 @@ gltfloader.load(
 	//called when the resource is loaded
 	function( gltf ){
 		scene.add( gltf.scene );
-
-		gltf.animations; // Array<THREE.AnimationClip>
-		gltf.scene; // THREE.Group
-		gltf.scenes; // Array<THREE.Group>
-		gltf.cameras; // Array<THREE.Camera>
-		gltf.asset; // Object
-
 	},
 	// Called while loading is progressing
 	function ( xhr ) {
@@ -45,7 +38,7 @@ gltfloader.load(
 
 
 // TORUS
-const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                //Defines Points, Vertices, Faces. etc
+const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Defines Points, Vertices, Faces. etc
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} );     //Material for the torus
 const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
 scene.add(donut);                                                          //Adding the torus to the scene
