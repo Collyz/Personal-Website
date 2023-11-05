@@ -20,33 +20,33 @@ camera.position.set(0, 30, 70);
 scene.background = new THREE.Color(0xAFE2BA);
 
 // URL needed for parcel to identify location of file
-url = new URL ('../../lake.glb', import.meta.url);
-url = "" + url;
+// url = new URL ('../../lake.glb', import.meta.url);
+// url = "" + url;
 
-// GLTF (Lake Model) import and creation
-gltfloader.load(
-	//resource url
-	url,
-	//called when the resource is loaded
-	function( gltf ){
-		scene.add( gltf.scene );
+// // GLTF (Lake Model) import and creation
+// gltfloader.load(
+// 	//resource url
+// 	url,
+// 	//called when the resource is loaded
+// 	function( gltf ){
+// 		scene.add( gltf.scene );
 
-		gltf.animations; // Array<THREE.AnimationClip>
-		gltf.scene; // THREE.Group
-		gltf.scenes; // Array<THREE.Group>
-		gltf.cameras; // Array<THREE.Camera>
-		gltf.asset; // Object
+// 		gltf.animations; // Array<THREE.AnimationClip>
+// 		gltf.scene; // THREE.Group
+// 		gltf.scenes; // Array<THREE.Group>
+// 		gltf.cameras; // Array<THREE.Camera>
+// 		gltf.asset; // Object
 
-	},
-	// Called while loading is progressing
-	function ( xhr ) {
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-	},
-	// Called when loading has errors
-	function ( error ) {
-		console.log( 'An error happened' );
-	}
-);
+// 	},
+// 	// Called while loading is progressing
+// 	function ( xhr ) {
+// 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+// 	},
+// 	// Called when loading has errors
+// 	function ( error ) {
+// 		console.log( 'An error happened' );
+// 	}
+// );
 
 // TORUS
 const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );                //Defines Points, Vertices, Faces. etc
