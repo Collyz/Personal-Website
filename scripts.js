@@ -38,10 +38,10 @@ gltfloader.load(
 
 
 // TORUS
-const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Defines Points, Vertices, Faces. etc
-const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} );     //Material for the torus
-const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
-scene.add(donut);                                                          //Adding the torus to the scene
+// const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Defines Points, Vertices, Faces. etc
+// const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} );     //Material for the torus
+// const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
+// scene.add(donut);                                                          //Adding the torus to the scene
 
 
 // LIGHTS
@@ -64,8 +64,8 @@ const controls = new OrbitControls(camera, renderer.domElement);           // Or
 function update() {
 	requestAnimationFrame( update );
     //Add anything here to do stuff to box before rendering
-	donut.rotation.x += 0.01;                                             // Rotate torus x
-	donut.rotation.y += 0.01;                                             // Rotate torus y
+	// donut.rotation.x += 0.01;                                             // Rotate torus x
+	// donut.rotation.y += 0.01;                                             // Rotate torus y
 
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
