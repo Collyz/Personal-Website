@@ -11,35 +11,37 @@ const gltfloader = new GLTFLoader();                                            
 
 // Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-camera.position.set(0, 30, 70);                                          // Camera pos
-scene.background = new THREE.Color(0xAFE2BA);                            // Scene background
+renderer.setSize( window.innerWidth, window.innerHeight);
+document.body.appendChild( renderer.domElement );
+// Camera pos
+camera.position.set(0, 30, 70);
+// Scene background
+scene.background = new THREE.Color(0xAFE2BA);
 
-// // GLTF (Lake Model) import and creation
-// gltfloader.load(
-// 	//resource url
-// 	"./assets/lake.glb",
-// 	//called when the resource is loaded
-// 	function( gltf ){
-// 		scene.add( gltf.scene );
+// GLTF (Lake Model) import and creation
+gltfloader.load(
+	//resource url
+	"./assets/lake.glb",
+	//called when the resource is loaded
+	function( gltf ){
+		scene.add( gltf.scene );
 
-// 		gltf.animations; // Array<THREE.AnimationClip>
-// 		gltf.scene; // THREE.Group
-// 		gltf.scenes; // Array<THREE.Group>
-// 		gltf.cameras; // Array<THREE.Camera>
-// 		gltf.asset; // Object
+		gltf.animations; // Array<THREE.AnimationClip>
+		gltf.scene; // THREE.Group
+		gltf.scenes; // Array<THREE.Group>
+		gltf.cameras; // Array<THREE.Camera>
+		gltf.asset; // Object
 
-// 	},
-// 	// Called while loading is progressing
-// 	function ( xhr ) {
-// 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-// 	},
-// 	// Called when loading has errors
-// 	function ( error ) {
-// 		console.log( 'An error happened' );
-// 	}
-// );
+	},
+	// Called while loading is progressing
+	function ( xhr ) {
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+	},
+	// Called when loading has errors
+	function ( error ) {
+		console.log( 'An error happened' );
+	}
+);
 
 
 // TORUS
@@ -68,7 +70,7 @@ const controls = new OrbitControls(camera, renderer.domElement);           // Or
 // Render/Animate loop (Called normally 60 times per second)
 function update() {
 	requestAnimationFrame( update );
-
+    //Add anything here to do stuff to box before rendering
 	donut.rotation.x += 0.01;                                             // Rotate torus x
 	donut.rotation.y += 0.01;                                             // Rotate torus y
 
