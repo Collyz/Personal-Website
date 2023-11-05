@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // INSTANTIATIONS
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
@@ -19,13 +19,13 @@ camera.position.set(0, 30, 70);
 scene.background = new THREE.Color(0xAFE2BA);
 
 // URL needed for parcel to identify location of file
-url = new URL ('./lake.glb', import.meta.url);
-url = "" + url;
+// url = new URL ('./lake.glb', import.meta.url);
+// url = "" + url;
 
 // GLTF (Lake Model) import and creation
 gltfloader.load(
 	//resource url
-	url,
+	"./lake.glb",
 	//called when the resource is loaded
 	function( gltf ){
 		scene.add( gltf.scene );
