@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 // INSTANTIATIONS
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
-const renderer = new THREE.WebGLRenderer();                                                                // RENDERER
+const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});                                               // RENDERER
 const gltfloader = new GLTFLoader();                                                                       // GLTF Loader
 //const textLoader = new TextLoader();
 
@@ -43,16 +43,17 @@ gltfloader.load(
 	}
 );
 
+
 // TORUS
-const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );                //Defines Points, Vertices, Faces. etc
+const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                //Defines Points, Vertices, Faces. etc
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347} );     //Material for the torus
 const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
 scene.add(donut);                                                          //Adding the torus to the scene
 
 
 // LIGHTS
-const directionalLight1 = new THREE.DirectionalLight(0xffffff, .5);
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, .5);
+const directionalLight1 = new THREE.DirectionalLight(0xffffff, .35);
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, .45);
 // LIGHTS POSITION
 directionalLight1.position.set(0, 20, 0);
 directionalLight2.position.set(0, -20, 0);
@@ -61,15 +62,15 @@ const directionalLightHelper1 = new THREE.DirectionalLightHelper(directionalLigh
 const directionalLightHelper2 = new THREE.DirectionalLightHelper(directionalLight2);
 scene.add(directionalLight1, directionalLight2, directionalLightHelper1, directionalLightHelper2);
 
-// GRID HELPER (To view grid for positional reasons)
-const gridHelper = new THREE.GridHelper(200, 50);
+
+// ORBIT CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
-scene.add(gridHelper);
+
 
 // Render/Animate loop (Called normally 60 times per second)
-function animate() {
-	requestAnimationFrame( animate );
-    //Add anything here to do stuff to box before rendering
+function update() {
+	requestAnimationFrame( update );
+
 	donut.rotation.x += 0.01;                                             // Rotate torus x
 	donut.rotation.y += 0.01;                                             // Rotate torus y
 
@@ -77,4 +78,14 @@ function animate() {
 	renderer.render( scene, camera );                                     // Update renderer
 }
 
-animate();
+// Resizing
+window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
+function onWindowResize(){
+	// Changing the camera aspect ratio and renderer
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// Update
+update();
