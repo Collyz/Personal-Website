@@ -5,43 +5,41 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 // INSTANTIATIONS
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
-const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});                                               // RENDERER
+const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});                                  // RENDERER
 const gltfloader = new GLTFLoader();                                                                       // GLTF Loader
 //const textLoader = new TextLoader();
 
 // Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize( window.innerWidth, window.innerHeight);
-document.body.appendChild( renderer.domElement );
-// Camera pos
-camera.position.set(0, 30, 70);
-// Scene background
-scene.background = new THREE.Color(0xAFE2BA);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+camera.position.set(0, 30, 70);                                          // Camera pos
+scene.background = new THREE.Color(0xAFE2BA);                            // Scene background
 
-// GLTF (Lake Model) import and creation
-gltfloader.load(
-	//resource url
-	"./assets/lake.glb",
-	//called when the resource is loaded
-	function( gltf ){
-		scene.add( gltf.scene );
+// // GLTF (Lake Model) import and creation
+// gltfloader.load(
+// 	//resource url
+// 	"./assets/lake.glb",
+// 	//called when the resource is loaded
+// 	function( gltf ){
+// 		scene.add( gltf.scene );
 
-		gltf.animations; // Array<THREE.AnimationClip>
-		gltf.scene; // THREE.Group
-		gltf.scenes; // Array<THREE.Group>
-		gltf.cameras; // Array<THREE.Camera>
-		gltf.asset; // Object
+// 		gltf.animations; // Array<THREE.AnimationClip>
+// 		gltf.scene; // THREE.Group
+// 		gltf.scenes; // Array<THREE.Group>
+// 		gltf.cameras; // Array<THREE.Camera>
+// 		gltf.asset; // Object
 
-	},
-	// Called while loading is progressing
-	function ( xhr ) {
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-	},
-	// Called when loading has errors
-	function ( error ) {
-		console.log( 'An error happened' );
-	}
-);
+// 	},
+// 	// Called while loading is progressing
+// 	function ( xhr ) {
+// 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+// 	},
+// 	// Called when loading has errors
+// 	function ( error ) {
+// 		console.log( 'An error happened' );
+// 	}
+// );
 
 
 // TORUS
