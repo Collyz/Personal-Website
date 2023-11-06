@@ -21,7 +21,7 @@ scene.background = new THREE.Color(0xAFE2BA);
 // GLTF (Lake Model) import and creation
 gltfloader.load(
 	//resource url
-	"./assets/lake.glb",
+	"./assets/models/lake.glb",
 	//called when the resource is loaded
 	function( gltf ){
 		scene.add( gltf.scene );
