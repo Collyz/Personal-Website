@@ -50,15 +50,18 @@ scene.add(donut);                                                          //Add
 
 
 // LIGHTS
-const directionalLight1 = new THREE.DirectionalLight(0xffffff, .35);
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, .45);
+const light1 = new THREE.DirectionalLight(0xffffff, .45);
+const light2 = new THREE.DirectionalLight(0xffffff, .45);
+const light3 = new THREE.PointLight(0xffffff, 1000);
 // LIGHTS POSITION
-directionalLight1.position.set(0, 20, 0);
-directionalLight2.position.set(0, -20, 0);
+light1.position.set(0, 20, 0);
+light2.position.set(0, -20, 0);
+light3.position.set(10, 20, 30);
 // LIGHT HELPERS
-const directionalLightHelper1 = new THREE.DirectionalLightHelper(directionalLight1);
-const directionalLightHelper2 = new THREE.DirectionalLightHelper(directionalLight2);
-scene.add(directionalLight1, directionalLight2, directionalLightHelper1, directionalLightHelper2);
+const helper1 = new THREE.DirectionalLightHelper(light1);
+const helper2 = new THREE.DirectionalLightHelper(light2);
+const helper3 = new THREE.PointLightHelper(light3);
+scene.add(light2, light3, helper1, helper2, helper3);
 
 
 // ORBIT CONTROLS
@@ -70,7 +73,9 @@ const controls = new OrbitControls(camera, renderer.domElement);           // Or
 function update() {
 	requestAnimationFrame( update );
     //Add anything here to do stuff to box before rendering
-
+	// light1.position.x += 0.1;
+	// light1.position.y += 0.1;
+	// light1.position.z += 0.1;
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
@@ -79,22 +84,13 @@ function update() {
 window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
 function onWindowResize(){
 	// Changing the camera aspect ratio and renderer
+
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function getRandomHexColor() {
-    // Generate a random number between 0 and 16777215 (corresponding to the maximum hexadecimal color value)
-    const randomColorValue = Math.floor(Math.random() * 16777215);
-    
-    // Convert the random number to a hexadecimal string and pad it with zeros if necessary
-    const randomColorHex = "#" + randomColorValue.toString(16).padStart(6, "0");
-
-    return randomColorHex;
-}
-
-let isSolid = true;
+// Toggle wireframe
 const originalColor = 0x63FF28;
 const button  = document.querySelector('button');
 button.addEventListener('click', () => {
