@@ -37,7 +37,7 @@ gltfloader.load(
 	},
 	// Called when loading has errors
 	function ( error ) {
-		console.log( 'An error happened' );
+		console.log( error );
 	}
 );
 
@@ -56,7 +56,7 @@ const light3 = new THREE.PointLight(0xffffff, 1000);
 // LIGHTS POSITION
 light1.position.set(0, 20, 0);
 light2.position.set(0, -20, 0);
-light3.position.set(10, 20, 30);
+light3.position.set(0, 30, 0);
 // LIGHT HELPERS
 const helper1 = new THREE.DirectionalLightHelper(light1);
 const helper2 = new THREE.DirectionalLightHelper(light2);
@@ -76,6 +76,7 @@ function update() {
 	// light1.position.x += 0.1;
 	// light1.position.y += 0.1;
 	// light1.position.z += 0.1;
+	light3.position.x = Math.sin(Date.now() / 500) / 2 * 150;
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
@@ -92,7 +93,7 @@ function onWindowResize(){
 
 // Toggle wireframe
 const originalColor = 0x63FF28;
-const button  = document.querySelector('button');
+const button  = document.querySelector('#wireframe_toggle');
 button.addEventListener('click', () => {
     lake.traverse((o) => {
         if (o.isMesh && o.material instanceof THREE.MeshStandardMaterial) {
