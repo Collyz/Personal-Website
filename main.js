@@ -46,42 +46,41 @@ gltfloader.load(
 const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Defines Points, Vertices, Faces. etc
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347, wireframe: true} );     //Material for the torus
 const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
-scene.add(donut);                                                          //Adding the torus to the scene
+//scene.add(donut);                                                          //Adding the torus to the scene
 
 
 // LIGHTS
 const light1 = new THREE.DirectionalLight(0xffffff, .45);
 const light2 = new THREE.DirectionalLight(0xffffff, .45);
-const light3 = new THREE.PointLight(0xffffff, 1000);
+const light3 = new THREE.PointLight(0xffffff, 3000);
+const light4 = new THREE.PointLight(0xffffff, 3000);
 // LIGHTS POSITION
 light1.position.set(0, 20, 0);
 light2.position.set(0, -20, 0);
 light3.position.set(0, 30, 0);
+light4.position.set(0, -40, 0);
 // LIGHT HELPERS
 const helper1 = new THREE.DirectionalLightHelper(light1);
 const helper2 = new THREE.DirectionalLightHelper(light2);
 const helper3 = new THREE.PointLightHelper(light3);
-scene.add(light2, light3, helper1, helper2, helper3);
-
+const helper4 = new THREE.PointLightHelper(light4);
+scene.add(light3, light4);
 
 // ORBIT CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
 
 
-
-// Render/Animate loop (Called normally 60 times per second)
+// RENDER/ANIMATION LOOP (Called normally 60 times per second)
 function update() {
 	requestAnimationFrame( update );
     //Add anything here to do stuff to box before rendering
-	// light1.position.x += 0.1;
-	// light1.position.y += 0.1;
-	// light1.position.z += 0.1;
 	light3.position.x = Math.sin(Date.now() / 500) / 2 * 150;
+	light4.position.x = Math.sin(Date.now() / 500) / 2 * 150;
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
 
-// Resizing
+// RESIZING
 window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
 function onWindowResize(){
 	// Changing the camera aspect ratio and renderer
@@ -92,7 +91,6 @@ function onWindowResize(){
 }
 
 // Toggle wireframe
-const originalColor = 0x63FF28;
 const button  = document.querySelector('#wireframe_toggle');
 button.addEventListener('click', () => {
     lake.traverse((o) => {
@@ -105,7 +103,6 @@ button.addEventListener('click', () => {
         }
     });
 });
-
 
 
 // Update
