@@ -15,7 +15,7 @@ renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize( window.innerWidth, window.innerHeight);
 document.body.appendChild( renderer.domElement );
 // Camera pos
-camera.position.set(-100, 70, 200);
+camera.position.set(-130, 70, 200);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
@@ -28,7 +28,9 @@ gltfloader.load(
 	"./assets/models/lake2.glb",
 	//called when the resource is loaded
 	function( gltf ){
+		
 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
+		lake.position.set(15, 0, 0);
 		scene.add( gltf.scene );
 	},
 	// Called while loading is progressing
@@ -40,6 +42,8 @@ gltfloader.load(
 		console.log( error );
 	}
 );
+
+
 
 
 // TORUS
@@ -78,7 +82,6 @@ function update() {
     //Add anything here to do stuff to box before rendering
 	light3.position.x = Math.sin(Date.now() / 500) / 2 * 150;
 	light4.position.x = Math.sin(Date.now() / 500) / 2 * 150;
-
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
