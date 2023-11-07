@@ -1,14 +1,12 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { randFloat } from 'three/src/math/MathUtils';
+import { Text } from 'troika-three-text';
 
 // INSTANTIATIONS
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
 const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});                                  // RENDERER
-const gltfloader = new GLTFLoader();                                                                       // GLTF Loader
-//const textLoader = new TextLoader();
 
 // Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
@@ -22,6 +20,7 @@ scene.background = new THREE.Color(0xAFE2BA);
 
 
 // GLTF (Lake Model) import and creation
+const gltfloader = new GLTFLoader();     
 let lake;
 gltfloader.load(
 	//resource url
@@ -43,7 +42,21 @@ gltfloader.load(
 	}
 );
 
-
+// IMAGE import and drawing
+const imageLoader = new THREE.ImageLoader();
+imageLoader.load(
+	// resource URL
+	'./assets/images/website-qr.png',
+	function ( image ){
+		const canvas = document.createElement('canvas');
+		const context = canvas.getContext('2d');
+		context.drawImage( image, 100, 100);
+	},
+	undefined,
+	function(){
+		console.error('An error happened');
+	}
+);
 
 
 // TORUS
@@ -51,6 +64,14 @@ const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Def
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347, wireframe: true} );     //Material for the torus
 const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
 //scene.add(donut);                                                          //Adding the torus to the scene
+
+// TEXT
+const test1 = new Text();
+test1.text = 'Lake-Fred';
+test1.fontSize = 10;
+test1.position.set(-10, 20, -100);
+test1.color = 0x6f08ff;
+scene.add(test1);
 
 
 // LIGHTS
@@ -74,7 +95,8 @@ scene.add(light3, light4, helper3, helper4);
 
 // ORBIT CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
-
+controls.enableDamping = true;
+controls.autoRotate = true;
 
 // RENDER/ANIMATION LOOP (Called normally 60 times per second)
 function update() {
