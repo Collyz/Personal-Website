@@ -15,7 +15,7 @@ renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize( window.innerWidth, window.innerHeight);
 document.body.appendChild( renderer.domElement );
 // Camera pos
-camera.position.set(-50, 40, 100);
+camera.position.set(-100, 60, 200);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
@@ -50,10 +50,13 @@ const donut = new THREE.Mesh( geometry, material );                        //Act
 
 
 // LIGHTS
-const light1 = new THREE.DirectionalLight(0xffffff, .45);
-const light2 = new THREE.DirectionalLight(0xffffff, .45);
+const light1 = new THREE.DirectionalLight(0xffffff, 1);
+const light2 = new THREE.DirectionalLight(0xffffff, 1);
 const light3 = new THREE.PointLight(0xffffff, 3000);
 const light4 = new THREE.PointLight(0xffffff, 3000);
+
+light3.name = 'Point_Light_1';
+light4.name = 'Point_Light_2';
 // LIGHTS POSITION
 light1.position.set(0, 20, 0);
 light2.position.set(0, -20, 0);
@@ -84,15 +87,14 @@ function update() {
 window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
 function onWindowResize(){
 	// Changing the camera aspect ratio and renderer
-
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 // Toggle wireframe
-const button  = document.querySelector('#wireframe_toggle');
-button.addEventListener('click', () => {
+const button1  = document.querySelector('#wireframe_toggle');
+button1.addEventListener('click', () => {
     lake.traverse((o) => {
         if (o.isMesh && o.material instanceof THREE.MeshStandardMaterial) {
             if (o.material.wireframe) {
@@ -102,6 +104,34 @@ button.addEventListener('click', () => {
             }
         }
     });
+});
+
+// Toggle lights
+const button2 = document.querySelector('#light_toggle');
+button2.addEventListener('click', () => {
+    if(scene.getObjectByName('Point_Light_1') && scene.getObjectByName('Point_Light_2')){
+		scene.remove(light3);
+		scene.remove(light4);
+		scene.add(light1);
+		scene.add(light2);
+		update();
+	}else{
+		scene.remove(light1);
+		scene.remove(light2);
+		scene.add(light3);
+		scene.add(light4);
+		update();
+	}
+});
+
+const button3 = document.querySelector('#reset_camera');
+button3.addEventListener('click', () => {
+	camera.position.set(-100, 60, 200);
+});
+
+const button4 = document.querySelector('#zoom_camera');
+button4.addEventListener('click', () => {
+	camera.position.set(-50, 40, 100);
 });
 
 
