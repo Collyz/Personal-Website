@@ -15,7 +15,7 @@ renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize( window.innerWidth, window.innerHeight);
 document.body.appendChild( renderer.domElement );
 // Camera pos
-camera.position.set(-100, 60, 200);
+camera.position.set(-100, 70, 200);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
@@ -25,7 +25,7 @@ scene.background = new THREE.Color(0xAFE2BA);
 let lake;
 gltfloader.load(
 	//resource url
-	"./assets/models/lake.glb",
+	"./assets/models/lake2.glb",
 	//called when the resource is loaded
 	function( gltf ){
 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
@@ -52,22 +52,21 @@ const donut = new THREE.Mesh( geometry, material );                        //Act
 // LIGHTS
 const light1 = new THREE.DirectionalLight(0xffffff, 1);
 const light2 = new THREE.DirectionalLight(0xffffff, 1);
-const light3 = new THREE.PointLight(0xffffff, 3000);
-const light4 = new THREE.PointLight(0xffffff, 3000);
-
+const light3 = new THREE.PointLight(0xffffff, 4000);
+const light4 = new THREE.PointLight(0xffffff, 4000);
 light3.name = 'Point_Light_1';
 light4.name = 'Point_Light_2';
 // LIGHTS POSITION
 light1.position.set(0, 20, 0);
 light2.position.set(0, -20, 0);
-light3.position.set(0, 30, 0);
-light4.position.set(0, -40, 0);
+light3.position.set(0, 50, 0);
+light4.position.set(0, -60, 0);
 // LIGHT HELPERS
 const helper1 = new THREE.DirectionalLightHelper(light1);
 const helper2 = new THREE.DirectionalLightHelper(light2);
 const helper3 = new THREE.PointLightHelper(light3);
 const helper4 = new THREE.PointLightHelper(light4);
-scene.add(light3, light4);
+scene.add(light3, light4, helper3, helper4);
 
 // ORBIT CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
@@ -79,6 +78,7 @@ function update() {
     //Add anything here to do stuff to box before rendering
 	light3.position.x = Math.sin(Date.now() / 500) / 2 * 150;
 	light4.position.x = Math.sin(Date.now() / 500) / 2 * 150;
+
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
@@ -126,11 +126,12 @@ button2.addEventListener('click', () => {
 
 const button3 = document.querySelector('#reset_camera');
 button3.addEventListener('click', () => {
-	camera.position.set(-100, 60, 200);
+	controls.reset();
 });
 
 const button4 = document.querySelector('#zoom_camera');
 button4.addEventListener('click', () => {
+	controls.reset();
 	camera.position.set(-50, 40, 100);
 });
 
