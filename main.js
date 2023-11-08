@@ -43,20 +43,28 @@ gltfloader.load(
 );
 
 // IMAGE import and drawing
-const imageLoader = new THREE.ImageLoader();
-imageLoader.load(
-	// resource URL
-	'./assets/images/website-qr.png',
-	function ( image ){
-		const canvas = document.createElement('canvas');
-		const context = canvas.getContext('2d');
-		context.drawImage( image, 100, 100);
-	},
-	undefined,
-	function(){
-		console.error('An error happened');
-	}
-);
+// const imageLoader = new THREE.ImageLoader();
+// imageLoader.load(
+// 	// resource URL
+// 	'./assets/images/website-qr.png',
+// 	function ( image ){
+// 		const canvas = document.createElement('canvas');
+// 		const context = canvas.getContext('2d');
+// 		context.drawImage( image, 100, 100);
+// 	},
+// 	undefined,
+// 	function(){
+// 		console.error('An error happened');
+// 	}
+// );
+
+// PLANE \ FLOOR
+// const geo = new THREE.PlaneGeometry(2000, 2000, 8, 8);
+// const mat = new THREE.MeshBasicMaterial({color: 0x000000, side: THREE.DoubleSide});
+// var plane = new THREE.Mesh(geo, mat);
+// plane.rotateX( -Math.PI / 2);
+// plane.position.y = -15;
+// scene.add(plane);
 
 
 // TORUS
@@ -69,16 +77,16 @@ const donut = new THREE.Mesh( geometry, material );                        //Act
 const test1 = new Text();
 test1.text = 'Lake-Fred';
 test1.fontSize = 10;
-test1.position.set(-10, 20, -100);
+test1.position.set(-10, 20, -30);
 test1.color = 0x6f08ff;
 scene.add(test1);
 
 
 // LIGHTS
-const light1 = new THREE.DirectionalLight(0xffffff, 1);
-const light2 = new THREE.DirectionalLight(0xffffff, 1);
-const light3 = new THREE.PointLight(0xffffff, 4000);
-const light4 = new THREE.PointLight(0xffffff, 4000);
+const light1 = new THREE.DirectionalLight(0xffffff, 3);
+const light2 = new THREE.DirectionalLight(0xffffff, 3);
+const light3 = new THREE.PointLight(0xffffff, 5000);
+const light4 = new THREE.PointLight(0xffffff, 5000);
 light3.name = 'Point_Light_1';
 light4.name = 'Point_Light_2';
 // LIGHTS POSITION
@@ -91,7 +99,7 @@ const helper1 = new THREE.DirectionalLightHelper(light1);
 const helper2 = new THREE.DirectionalLightHelper(light2);
 const helper3 = new THREE.PointLightHelper(light3);
 const helper4 = new THREE.PointLightHelper(light4);
-scene.add(light3, light4, helper3, helper4);
+scene.add(light3, light4);
 
 // ORBIT CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
@@ -104,6 +112,7 @@ function update() {
     //Add anything here to do stuff to box before rendering
 	light3.position.x = Math.sin(Date.now() / 500) / 2 * 150;
 	light4.position.x = Math.sin(Date.now() / 500) / 2 * 150;
+	
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
