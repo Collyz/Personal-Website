@@ -42,21 +42,18 @@ gltfloader.load(
 	}
 );
 
-// IMAGE import and drawing
-// const imageLoader = new THREE.ImageLoader();
-// imageLoader.load(
-// 	// resource URL
-// 	'./assets/images/website-qr.png',
-// 	function ( image ){
-// 		const canvas = document.createElement('canvas');
-// 		const context = canvas.getContext('2d');
-// 		context.drawImage( image, 100, 100);
-// 	},
-// 	undefined,
-// 	function(){
-// 		console.error('An error happened');
-// 	}
-// );
+// IMAGE import and drawing onto a PLANE
+const planeGeo= new THREE.PlaneGeometry(40, 40);
+const textLoader = new THREE.TextureLoader();
+let texture = textLoader.load("./assets/images/website-qr.png");
+const planeMat = new THREE.MeshBasicMaterial({
+	color:0xeba6f5,
+	side: THREE.DoubleSide,
+	map:texture
+});
+const plane1 = new THREE.Mesh(planeGeo, planeMat);
+plane1.position.set(15, 50, -30);
+scene.add(plane1);
 
 // PLANE \ FLOOR
 // const geo = new THREE.PlaneGeometry(2000, 2000, 8, 8);
@@ -74,12 +71,18 @@ const donut = new THREE.Mesh( geometry, material );                        //Act
 //scene.add(donut);                                                          //Adding the torus to the scene
 
 // TEXT
-const test1 = new Text();
-test1.text = 'Lake-Fred';
-test1.fontSize = 10;
-test1.position.set(-10, 20, -30);
-test1.color = 0x6f08ff;
-scene.add(test1);
+const text1 = new Text();
+text1.text = 'Lake-Fred';
+text1.fontSize = 10;
+text1.position.set(-10, 20, -30);
+text1.color = 0x6f08ff;
+
+const text2 = new Text();
+text2.text = 'Source Code';
+text2.fontSize = 10;
+text2.position.set(-12, 90, -30);
+text2.color = 0x6f08ff;
+scene.add(text1, text2);
 
 
 // LIGHTS
