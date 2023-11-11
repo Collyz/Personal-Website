@@ -14,9 +14,9 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 
 // Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize( window.innerWidth/2, window.innerHeight/1.5);
+renderer.setSize( window.innerWidth/1.3, window.innerHeight/1.3);
 // Camera pos
-camera.position.set(0, 30, 100);
+camera.position.set(0, 30, 130);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
