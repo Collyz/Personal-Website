@@ -18,8 +18,7 @@ renderer.setSize( window.innerWidth/1.3, window.innerHeight/1.3);
 // Camera pos
 camera.position.set(0, 30, 130);
 // Scene background
-scene.background = new THREE.Color(0xAFE2BA);
-
+scene.background = new THREE.Color(0x26453E);
 
 
 // GLTF (Lake Model) import and creation
@@ -78,7 +77,7 @@ const text1 = new Text();
 text1.text = 'Lake-Fred';
 text1.fontSize = 10;
 text1.position.set(-10, 20, -30);
-text1.color = 0x6f08ff;
+text1.color = 0xE34234;
 
 // const text2 = new Text();
 // text2.text = 'Source Code';
@@ -154,13 +153,11 @@ button2.addEventListener('click', () => {
 		scene.remove(light4);
 		scene.add(light1);
 		scene.add(light2);
-		update();
 	}else{
 		scene.remove(light1);
 		scene.remove(light2);
 		scene.add(light3);
 		scene.add(light4);
-		update();
 	}
 });
 
