@@ -17,24 +17,3 @@ body{
 .headings{
     color: #F13C20;
 }
-
-#info{
-    color: rgb(71, 71, 252);
-    position: absolute;
-    top: 7px;
-    left: 20px;
-    width: auto;
-    text-align: center;
-    z-index: 100;
-    display: block;
-}
-
-#controls{
-    position: absolute;
-    top: 110px;
-    left: 20px;
-    width: auto;
-    text-align: center;
-    z-index: 100;
-    display: block;
-}

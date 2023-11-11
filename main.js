@@ -6,14 +6,17 @@ import { Text } from 'troika-three-text';
 // INSTANTIATIONS
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
-const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});                                  // RENDERER
+const renderer = new THREE.WebGLRenderer({// RENDERER
+	antialias: true,
+	alpha: true,
+	canvas: document.querySelector('#scene')
+});                                  
 
 // Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize( window.innerWidth, window.innerHeight);
-document.body.appendChild( renderer.domElement );
+renderer.setSize( window.innerWidth/2, window.innerHeight/2);
 // Camera pos
-camera.position.set(-130, 70, 200);
+camera.position.set(-30, 50, 100);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
@@ -43,17 +46,17 @@ gltfloader.load(
 );
 
 // IMAGE import and drawing onto a PLANE
-const planeGeo= new THREE.PlaneGeometry(40, 40);
-const textLoader = new THREE.TextureLoader();
-let texture = textLoader.load("./assets/images/website-qr.png");
-const planeMat = new THREE.MeshBasicMaterial({
-	color:0xeba6f5,
-	side: THREE.DoubleSide,
-	map:texture
-});
-const plane1 = new THREE.Mesh(planeGeo, planeMat);
-plane1.position.set(15, 50, -30);
-scene.add(plane1);
+// const planeGeo= new THREE.PlaneGeometry(40, 40);
+// const textLoader = new THREE.TextureLoader();
+// let texture = textLoader.load("./assets/images/website-qr.png");
+// const planeMat = new THREE.MeshBasicMaterial({
+// 	color:0xeba6f5,
+// 	side: THREE.DoubleSide,
+// 	map:texture
+// });
+// const plane1 = new THREE.Mesh(planeGeo, planeMat);
+// plane1.position.set(15, 50, -30);
+// scene.add(plane1);
 
 // PLANE \ FLOOR
 // const geo = new THREE.PlaneGeometry(2000, 2000, 8, 8);
@@ -77,12 +80,12 @@ text1.fontSize = 10;
 text1.position.set(-10, 20, -30);
 text1.color = 0x6f08ff;
 
-const text2 = new Text();
-text2.text = 'Source Code';
-text2.fontSize = 10;
-text2.position.set(-12, 90, -30);
-text2.color = 0x6f08ff;
-scene.add(text1, text2);
+// const text2 = new Text();
+// text2.text = 'Source Code';
+// text2.fontSize = 10;
+// text2.position.set(-12, 90, -30);
+// text2.color = 0x6f08ff;
+scene.add(text1);
 
 
 // LIGHTS
@@ -121,13 +124,13 @@ function update() {
 }
 
 // RESIZING
-window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
-function onWindowResize(){
-	// Changing the camera aspect ratio and renderer
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix();
-	renderer.setSize(window.innerWidth, window.innerHeight);
-}
+// window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
+// function onWindowResize(){
+// 	// Changing the camera aspect ratio and renderer
+// 	camera.aspect = window.innerWidth / window.innerHeight;
+// 	camera.updateProjectionMatrix();
+// 	renderer.setSize(window.innerWidth, window.innerHeight);
+// }
 
 // Toggle wireframe
 const button1  = document.querySelector('#wireframe_toggle');
