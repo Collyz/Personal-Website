@@ -16,7 +16,7 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize( window.innerWidth/2, window.innerHeight/1.5);
 // Camera pos
-camera.position.set(-30, 50, 100);
+camera.position.set(0, 30, 100);
 // Scene background
 scene.background = new THREE.Color(0xAFE2BA);
 
@@ -32,7 +32,7 @@ gltfloader.load(
 	function( gltf ){
 		
 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
-		lake.position.set(15, 0, 0);
+		lake.position.set(0, 0, 0);
 		scene.add( gltf.scene );
 	},
 	// Called while loading is progressing
@@ -68,9 +68,9 @@ gltfloader.load(
 
 
 // TORUS
-const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Defines Points, Vertices, Faces. etc
-const material = new THREE.MeshStandardMaterial( { color: 0xFF6347, wireframe: true} );     //Material for the torus
-const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
+// const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Defines Points, Vertices, Faces. etc
+// const material = new THREE.MeshStandardMaterial( { color: 0xFF6347, wireframe: true} );     //Material for the torus
+// const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
 //scene.add(donut);                                                          //Adding the torus to the scene
 
 // TEXT
