@@ -14,7 +14,7 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 
 // Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize( window.innerWidth/2, window.innerHeight/2);
+renderer.setSize( window.innerWidth/2, window.innerHeight/1.5);
 // Camera pos
 camera.position.set(-30, 50, 100);
 // Scene background
@@ -167,12 +167,6 @@ button2.addEventListener('click', () => {
 const button3 = document.querySelector('#reset_camera');
 button3.addEventListener('click', () => {
 	controls.reset();
-});
-
-const button4 = document.querySelector('#zoom_camera');
-button4.addEventListener('click', () => {
-	controls.reset();
-	camera.position.set(-50, 40, 100);
 });
 
 
