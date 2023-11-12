@@ -133,8 +133,8 @@ function onWindowResize(){
 }
 
 // Toggle wireframe
-const button1  = document.querySelector('#wireframe_toggle');
-button1.addEventListener('click', () => {
+const button1  = document.getElementById('wireframe_toggle');
+button1.addEventListener('click', function() {
     lake.traverse((o) => {
         if (o.isMesh && o.material instanceof THREE.MeshStandardMaterial) {
             if (o.material.wireframe) {
