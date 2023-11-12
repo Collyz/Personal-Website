@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { Text } from 'troika-three-text';
 
 // INSTANTIATIONS
+const resize_scale = 1.3;
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
 const renderer = new THREE.WebGLRenderer({// RENDERER
@@ -14,7 +15,7 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 
 // Renderer pixel ratio, size, and adding to DOM
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize( window.innerWidth/1.3, window.innerHeight/1.3);
+renderer.setSize( window.innerWidth / resize_scale, window.innerHeight / resize_scale);
 // Camera pos
 camera.position.set(0, 30, 130);
 // Scene background
@@ -123,13 +124,13 @@ function update() {
 }
 
 // RESIZING
-// window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
-// function onWindowResize(){
-// 	// Changing the camera aspect ratio and renderer
-// 	camera.aspect = window.innerWidth / window.innerHeight;
-// 	camera.updateProjectionMatrix();
-// 	renderer.setSize(window.innerWidth, window.innerHeight);
-// }
+window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
+function onWindowResize(){
+	// Changing the camera aspect ratio and renderer
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth / resize_scale, window.innerHeight / resize_scale);
+}
 
 // Toggle wireframe
 const button1  = document.querySelector('#wireframe_toggle');
@@ -164,6 +165,16 @@ button2.addEventListener('click', () => {
 const button3 = document.querySelector('#reset_camera');
 button3.addEventListener('click', () => {
 	controls.reset();
+});
+
+const checkbox1 = document.getElementById('cam_spin');
+console.log(checkbox1);
+checkbox1.addEventListener('click', function() {
+	if(checkbox1.checked){
+		controls.autoRotate = false;
+	}else{
+		controls.autoRotate = true;
+	}
 });
 
 
