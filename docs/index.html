@@ -15,7 +15,7 @@
 
 
   <!--Navbar-->
-  <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
     <div class="container-fluid">
         <!--Main Page Title-->
         <a class="navbar-brand" href="index.html">Mohammed's Personal Website</a>
@@ -64,12 +64,57 @@
     </p>
     <h3>Data Processing</h3>
     <p class="fs-5">
-      
+      Using Python, I retrieved the raw data that was collected in a CSV file. I first removed several non unique x and y values from the data. I then proceeded to scale the data as the distance between two points was incredibly small. This resulted in the the points going from 1771 to 1480 points. This was a removal of 291 points. I then wrote this new data to a new file to be used in the Blender Script that actually creates the model. I did however create several graphs to view changes in the filtered vs non-filtered data.
     </p>
-    <h3>Triangulation Techniques</h3>
+    <img class='img-fluid' src="./assets/unfiltered-62cb82f9.png" alt="unfiltered point data">
+    <img class='img-fluid' src="./assets/filtered-1e75f778.png" alt="unfiltered point data">
+    <img class='img-fluid' src="./assets/filtered_vs_unfiltered-75cff6d9.png" alt="filtered vs unfiltered">
+    <br>
+    <br>
+    <h3>Creating the Model: Delaunay Triangulation</h3>
     <p class="fs-5">
-      
+      The actual triangulation was computed by SciPy's Delaunay Triangulation. Here are the results before the data was put into Blender.
     </p>
+    <img class='img-fluid' src="./assets/2d_Delaunay_Lake-30fc0a55.png" alt="">
+    <br>
+    <br>
+    <p>
+      Here is the stand-alone triangulation of the lake that the SciPy Delaunay computed. Raising these points in the third dimension is a simple way to create the triangulation in 3D. This is not always the best way to do it, in this case, it just so happened to be a decent solution. 
+    </p>
+    <img class='img-fluid' src="./assets/Delaunay_and_Voronoi-e2903912.png" alt="">
+    <img class='img-fluid' src="./assets/Delaunay_example-aff05e72.png" alt="">
+    <br>
+    <br>
+    <p>
+      The two images above are some experimentations that I performed with the SciPy spatial module. 
+      I generated a random set of points and performed 2D Delaunay on the points in the graph titled 'Example of Delaunay'. 
+      The graph titled 'Delaunay Triangulation and Voronoi Diagram' was my experimentation with the relation between a Delaunay Triangulation(DT) and the Voronoi diagram. The DT corresponds to the dual graph of the Voronoi diagram.
+    </p>
+
+    <h3>3D Printing the Model</h3>
+    <p class="fs-5">
+      Trying to 3D printing the model brought with it numerous issues:
+      <ul>
+        <li>The first being that details are lost due to the limitations of our printers.</li>
+        <li>The model is too thin to remove gently from the printer base</li>
+        <li>When splitting the model in Blender, the slicer does not understand what happened and slices essentially nothing of value from the model</li>
+        <li>Trying to remedy this issue by extrusion in one direction did not prove successful</li>
+        <li>The model would lose detail or break in the opposite direction of the extrusion</li>
+        <li>Trying to print the model face down for the fewest amount of supports proved fruitless and the slicer could not understand the lake model is a bown essentially</li>
+      </ul>
+      <b>The solution came in the form of double extruding the splits of the model. Extruding one object up and the other down for both sides of the split generated STL files that were printable</b>
+      <br>
+      <br>
+      <img class="img-fluid" src="./assets/split-3857978b.png" alt="split image of the lake model in blender">
+    </p>
+    <h3>Browser Rendering the Model Using Three.js</h3>
+    <p class="fs-5">
+      Below is the canvas for the Lake Model that is being rendered into your browser using <a href="https://threejs.org/">Three.js</a> It is a wonderful JavaScript library that mades putting 3D graphics into a browser very simple. The link to the source code can be found in the navigation bar
+    </p>
+    <img class='img-fluid' src="./assets/website-qr-ec73afba.png" alt="qr code to this website used for presentation">
+    <br>
+    <br>
+    <p>QR code this website</p>
   </div>
 
   <!--Data Parsing/Modification-->
