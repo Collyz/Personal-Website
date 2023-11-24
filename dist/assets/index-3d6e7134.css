@@ -1,6 +1,6 @@
 @font-face{
     font-family:'Poppins';
-    src:url('../assets/poppins-regular-webfont-5b27aff7.woff')!important
+    src:url('../assets/poppins-regular-webfont.woff')
 }
 .colors{color:#f13c20;color:#4056a1;color:#c5cbe3}
 .headings{font-family:'Poppins'!important; color:#f13c20}
