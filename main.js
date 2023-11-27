@@ -14,7 +14,7 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 });                                  
 
 // Renderer pixel ratio, size, and adding to DOM
-renderer.setPixelRatio(window.devicePixelRatio)
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize( window.innerWidth / resize_scale, window.innerHeight / resize_scale);
 // Camera pos
 camera.position.set(0, 30, 130);
@@ -30,7 +30,6 @@ gltfloader.load(
 	"./assets/models/lake2.glb",
 	//called when the resource is loaded
 	function( gltf ){
-		
 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
 		lake.position.set(0, 0, 0);
 		scene.add( gltf.scene );
@@ -93,19 +92,23 @@ const light1 = new THREE.DirectionalLight(0xffffff, 3);
 const light2 = new THREE.DirectionalLight(0xffffff, 3);
 const light3 = new THREE.PointLight(0xffffff, 5000);
 const light4 = new THREE.PointLight(0xffffff, 5000);
+const light5 = new THREE.AmbientLight(0xffffff, 1);
 light3.name = 'Point_Light_1';
 light4.name = 'Point_Light_2';
+light4.name = 'Ambient_Light';
 // LIGHTS POSITION
 light1.position.set(0, 20, 0);
 light2.position.set(0, -20, 0);
 light3.position.set(0, 50, 0);
 light4.position.set(0, -60, 0);
+light5.position.set(0, 50, 0);
+
 // LIGHT HELPERS
 const helper1 = new THREE.DirectionalLightHelper(light1);
 const helper2 = new THREE.DirectionalLightHelper(light2);
 const helper3 = new THREE.PointLightHelper(light3);
 const helper4 = new THREE.PointLightHelper(light4);
-scene.add(light3, light4);
+scene.add(light3, light4, light5);
 
 // ORBIT CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
