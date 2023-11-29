@@ -86,6 +86,22 @@ text1.color = 0xE34234;
 // text2.color = 0x6f08ff;
 scene.add(text1);
 
+// Temporary Point
+const vertices = [];
+
+for ( let i = 0; i < 10000; i ++ ) {
+	const x = THREE.MathUtils.randFloatSpread( 2000 );
+	const y = THREE.MathUtils.randFloatSpread( 2000 );
+	const z = THREE.MathUtils.randFloatSpread( 2000 );
+
+	vertices.push( x, y, z );
+}
+
+const p1Geo = new THREE.BufferGeometry();
+p1Geo.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+const p1Mat = new THREE.PointsMaterial({ color: 0x888888 });
+const p1 = new THREE.Points(p1Geo, p1Mat);
+scene.add(p1);
 
 // LIGHTS
 const light1 = new THREE.DirectionalLight(0xffffff, 3);
