@@ -111,7 +111,7 @@ const light4 = new THREE.PointLight(0xffffff, 5000);
 const light5 = new THREE.AmbientLight(0xffffff, 1);
 light3.name = 'Point_Light_1';
 light4.name = 'Point_Light_2';
-light4.name = 'Ambient_Light';
+light5.name = 'Ambient_Light';
 // LIGHTS POSITION
 light1.position.set(0, 20, 0);
 light2.position.set(0, -20, 0);
