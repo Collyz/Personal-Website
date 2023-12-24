@@ -6,7 +6,7 @@ import { Text } from 'troika-three-text';
 // INSTANTIATIONS
 const resize_scale = 1.3;
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);        // CAMERA
+const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 500);        // CAMERA
 const renderer = new THREE.WebGLRenderer({// RENDERER
 	antialias: true,
 	alpha: true,
@@ -17,11 +17,17 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize( window.innerWidth / resize_scale, window.innerHeight / resize_scale);
 // Camera pos
+<<<<<<< HEAD
 camera.position.set(0, 0, 30);
+=======
+camera.position.set(0, 0, 100);
+camera.lookAt(0, 0, 0)
+>>>>>>> e48dc9a (Removed lake, changed desc, docs not update)
 // Scene background
 scene.background = new THREE.Color(0x003e29);
 
 
+<<<<<<< HEAD
 // GLTF (Lake Model) import and creation
 // const gltfloader = new GLTFLoader();     
 // let lake;
@@ -44,6 +50,8 @@ scene.background = new THREE.Color(0x003e29);
 // 	}
 // );
 
+=======
+>>>>>>> e48dc9a (Removed lake, changed desc, docs not update)
 // IMAGE import and drawing onto a PLANE
 // const planeGeo= new THREE.PlaneGeometry(40, 40);
 // const textLoader = new THREE.TextureLoader();
@@ -73,19 +81,21 @@ scene.background = new THREE.Color(0x003e29);
 //scene.add(donut);                                                          //Adding the torus to the scene
 
 // TEXT
-const text1 = new Text();
-text1.text = 'Lake-Fred';
-text1.fontSize = 10;
-text1.position.set(-10, 20, -30);
-text1.color = 0xE34234;
+// const text1 = new Text();
+// text1.text = 'Lake-Fred';
+// text1.fontSize = 10;
+// text1.position.set(-10, 20, -30);
+// text1.color = 0xE34234;
+// scene.add(text1);
 
-// const text2 = new Text();
-// text2.text = 'Source Code';
-// text2.fontSize = 10;
-// text2.position.set(-12, 90, -30);
-// text2.color = 0x6f08ff;
-scene.add(text1);
+// LINES
+const material = new THREE.LineBasicMaterial({color: 0x000ff});
+const points = [];
+points.push( new THREE.Vector3(-10,0,0));
+points.push( new THREE.Vector3(0,10,0));
+points.push( new THREE.Vector3(10,0,0));
 
+<<<<<<< HEAD
 // Temporary Point
 // const vertices = [];
 
@@ -104,6 +114,29 @@ p1Geo.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
 const p1Mat = new THREE.PointsMaterial({color: 0x888888});
 const p1 = new THREE.Points(p1Geo, p1Mat);
 scene.add(p1);
+=======
+const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+const line = new THREE.Line(lineGeo, material);
+scene.add(line);
+
+// POINTS
+const vertices = [];
+
+function newPoint(x , y, z){
+	let pGeo = new THREE.BufferGeometry().setFromPoints(-10,0,0);
+	let pMat = new THREE.PointsMaterial({ color: 0xFFA500 });
+	let point = new THREE.Points(pGeo, pMat);
+	return point;
+}
+vertices.push(newPoint());
+
+const pointGeo = new THREE.BufferGeometry().setFromPoints(vertices);
+const p1Mat = new THREE.PointsMaterial({ color: 0xFFA500 });
+const p1 = new THREE.Points(pointGeo, p1Mat);
+const l1 = new THREE.Line(pointGeo, material);
+scene.add(p1)
+console.log(p1.getWorldPosition)
+>>>>>>> e48dc9a (Removed lake, changed desc, docs not update)
 
 const positions = p1.geometry.getAttribute('position').array;
 
@@ -172,7 +205,7 @@ function update() {
     //Add anything here to do stuff to box before rendering
 	light3.position.x = Math.sin(Date.now() / 500) / 2 * 150;
 	light4.position.x = Math.sin(Date.now() / 500) / 2 * 150;
-	
+	p1.position.add(new THREE.Vector3(0, .005, 0));
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
@@ -185,20 +218,6 @@ function onWindowResize(){
 	camera.updateProjectionMatrix();
 	renderer.setSize(window.innerWidth / resize_scale, window.innerHeight / resize_scale);
 }
-
-// Toggle wireframe
-const button1  = document.getElementById('wireframe_toggle');
-button1.addEventListener('click', function() {
-    lake.traverse((o) => {
-        if (o.isMesh && o.material instanceof THREE.MeshStandardMaterial) {
-            if (o.material.wireframe) {
-                o.material.wireframe = false;
-            } else {
-                o.material.wireframe = true;
-            }
-        }
-    });
-});
 
 // Toggle lights
 const button2 = document.querySelector('#light_toggle');
