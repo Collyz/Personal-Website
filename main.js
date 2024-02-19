@@ -17,32 +17,32 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize( window.innerWidth / resize_scale, window.innerHeight / resize_scale);
 // Camera pos
-camera.position.set(0, 30, 130);
+camera.position.set(0, 0, 30);
 // Scene background
 scene.background = new THREE.Color(0x003e29);
 
 
 // GLTF (Lake Model) import and creation
-const gltfloader = new GLTFLoader();     
-let lake;
-gltfloader.load(
-	//resource url
-	"./assets/models/lake2.glb",
-	//called when the resource is loaded
-	function( gltf ){
-		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
-		lake.position.set(0, 0, 0);
-		scene.add( gltf.scene );
-	},
-	// Called while loading is progressing
-	function ( xhr ) {
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-	},
-	// Called when loading has errors
-	function ( error ) {
-		console.log( error );
-	}
-);
+// const gltfloader = new GLTFLoader();     
+// let lake;
+// gltfloader.load(
+// 	//resource url
+// 	"./assets/models/lake2.glb",
+// 	//called when the resource is loaded
+// 	function( gltf ){
+// 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
+// 		lake.position.set(0, 0, 0);
+// 		scene.add( gltf.scene );
+// 	},
+// 	// Called while loading is progressing
+// 	function ( xhr ) {
+// 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+// 	},
+// 	// Called when loading has errors
+// 	function ( error ) {
+// 		console.log( error );
+// 	}
+// );
 
 // IMAGE import and drawing onto a PLANE
 // const planeGeo= new THREE.PlaneGeometry(40, 40);
@@ -87,21 +87,56 @@ text1.color = 0xE34234;
 scene.add(text1);
 
 // Temporary Point
-const vertices = [];
+// const vertices = [];
 
-for ( let i = 0; i < 10000; i ++ ) {
-	const x = THREE.MathUtils.randFloatSpread( 2000 );
-	const y = THREE.MathUtils.randFloatSpread( 2000 );
-	const z = THREE.MathUtils.randFloatSpread( 2000 );
+// for ( let i = 0; i < 10000; i ++ ) {
+// 	const x = THREE.MathUtils.randFloatSpread( 2000 );
+// 	const y = THREE.MathUtils.randFloatSpread( 2000 );
+// 	const z = THREE.MathUtils.randFloatSpread( 2000 );
 
-	vertices.push( x, y, z );
-}
+// 	vertices.push( x, y, z );
+// }
+
 
 const p1Geo = new THREE.BufferGeometry();
-p1Geo.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
-const p1Mat = new THREE.PointsMaterial({ color: 0x888888 });
+const verts = new Float32Array([5, 0, 0, 5, -10, 0, 10, -10, 0])
+p1Geo.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
+const p1Mat = new THREE.PointsMaterial({color: 0x888888});
 const p1 = new THREE.Points(p1Geo, p1Mat);
 scene.add(p1);
+
+const positions = p1.geometry.getAttribute('position').array;
+
+// Iterating over the vertices (every three elements represent a vertex)
+for (let i = 0; i < positions.length; i += 3) {
+    const x = positions[i];
+    const y = positions[i + 1];
+    const z = positions[i + 2];
+
+    // Log or use the coordinates as needed
+    console.log('X:', x);
+    console.log('Y:', y);
+    console.log('Z:', z);
+}
+
+function Delaunay(verts){
+	let lineNum = verts.length  / 3;
+	for(let i = 0; i < lineNum; i+=3){
+		let lineGeo = new THREE.BufferGeometry();
+		if(i == lineNum - 1){
+			// do something
+		}
+		let vertices = new Float32Array(verts.slice(i, i + 6));
+	}
+}
+
+Delaunay(verts);
+
+// const p1Geo = new THREE.BufferGeometry();
+// p1Geo.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+// const p1Mat = new THREE.PointsMaterial({ color: 0x888888 });
+// const p1 = new THREE.Points(p1Geo, p1Mat);
+// scene.add(p1);
 
 // LIGHTS
 const light1 = new THREE.DirectionalLight(0xffffff, 3);
@@ -129,7 +164,7 @@ scene.add(light3, light4, light5);
 // ORBIT CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);           // Orbit controls
 controls.enableDamping = true;
-controls.autoRotate = true;
+controls.autoRotate = false;
 
 // RENDER/ANIMATION LOOP (Called normally 60 times per second)
 function update() {
@@ -187,7 +222,6 @@ button3.addEventListener('click', () => {
 });
 
 const checkbox1 = document.getElementById('cam_spin');
-console.log(checkbox1);
 checkbox1.addEventListener('click', function() {
 	if(checkbox1.checked){
 		controls.autoRotate = false;
@@ -195,7 +229,6 @@ checkbox1.addEventListener('click', function() {
 		controls.autoRotate = true;
 	}
 });
-
 
 // Update
 update();
