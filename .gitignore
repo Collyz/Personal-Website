@@ -2,6 +2,7 @@ node_modules/
 package-lock.json
 package.json
 dist/
+dist_2/
 index.html
 main.json
 copy_pasta.txt
