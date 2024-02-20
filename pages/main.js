@@ -3,19 +3,25 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { Text } from 'troika-three-text';
 
+// Canvas sizing
+const resizingDiv = document.getElementById('scene_div');
+const canvas = document.getElementById('scene');
+let divWidth = resizingDiv.clientWidth; 
+
 // INSTANTIATIONS
 const resize_scale = 1.3;
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
-const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 500);        // CAMERA
+const camera = new THREE.PerspectiveCamera( 70, divWidth / window.innerHeight, 0.1, 500);        // CAMERA
 const renderer = new THREE.WebGLRenderer({// RENDERER
 	antialias: true,
 	alpha: true,
 	canvas: document.querySelector('#scene')
-});                                  
+});
+
 
 // Renderer pixel ratio, size, and add to DOM, camera position and angle
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize( window.innerWidth / resize_scale, window.innerHeight / resize_scale);
+renderer.setSize( divWidth, window.innerHeight / resize_scale);
 camera.position.set(-10, 50, 130);
 camera.lookAt(0, 0, 0)
 
@@ -35,7 +41,7 @@ const gltfloader = new GLTFLoader();
 let lake;
 gltfloader.load(
 	//resource url
-	"./assets/models/lake2.glb",
+	"../assets/models/lake2.glb",
 	//called when the resource is loaded
 	function( gltf ){
 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
@@ -94,9 +100,10 @@ function update() {
 window.addEventListener('resize', onWindowResize, false);                 // Window event listener calls the resizing function
 function onWindowResize(){
 	// Changing the camera aspect ratio and renderer
-	camera.aspect = window.innerWidth / window.innerHeight;
+	divWidth = resizingDiv.clientWidth;
+	camera.aspect = divWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
-	renderer.setSize(window.innerWidth / resize_scale, window.innerHeight / resize_scale);
+	renderer.setSize(divWidth, window.innerHeight/resize_scale);
 }
 
 // Toggle lights
