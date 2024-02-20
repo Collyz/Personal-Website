@@ -4,3 +4,5 @@ package.json
 dist/
 index.html
 main.json
+copy_pasta.txt
+.vite/deps
