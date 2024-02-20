@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { Text } from 'troika-three-text'; //DELETE IF NOT NEEDED
+import { Text } from 'troika-three-text';
 
 // INSTANTIATIONS
 const resize_scale = 1.3;
