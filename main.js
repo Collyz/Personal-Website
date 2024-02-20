@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-// import { Text } from 'troika-three-text'; //DELETE IF NOT NEEDED
+import { Text } from 'troika-three-text'; //DELETE IF NOT NEEDED
 
 // INSTANTIATIONS
 const resize_scale = 1.3;
@@ -13,223 +13,44 @@ const renderer = new THREE.WebGLRenderer({// RENDERER
 	canvas: document.querySelector('#scene')
 });                                  
 
-// Renderer pixel ratio, size, and adding to DOM
+// Renderer pixel ratio, size, and add to DOM, camera position and angle
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize( window.innerWidth / resize_scale, window.innerHeight / resize_scale);
-// Camera pos
-<<<<<<< HEAD
-<<<<<<< HEAD
-camera.position.set(0, 0, 30);
-=======
-camera.position.set(0, 0, 100);
-=======
-camera.position.set(0, 0, 300);
->>>>>>> 84e97f9 (Dev functions, no new docs)
+camera.position.set(-10, 50, 130);
 camera.lookAt(0, 0, 0)
->>>>>>> e48dc9a (Removed lake, changed desc, docs not update)
+
 // Scene background
 scene.background = new THREE.Color(0x003e29);
 
-
-<<<<<<< HEAD
-// GLTF (Lake Model) import and creation
-// const gltfloader = new GLTFLoader();     
-// let lake;
-// gltfloader.load(
-// 	//resource url
-// 	"./assets/models/lake2.glb",
-// 	//called when the resource is loaded
-// 	function( gltf ){
-// 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
-// 		lake.position.set(0, 0, 0);
-// 		scene.add( gltf.scene );
-// 	},
-// 	// Called while loading is progressing
-// 	function ( xhr ) {
-// 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-// 	},
-// 	// Called when loading has errors
-// 	function ( error ) {
-// 		console.log( error );
-// 	}
-// );
-
-=======
->>>>>>> e48dc9a (Removed lake, changed desc, docs not update)
-// IMAGE import and drawing onto a PLANE
-// const planeGeo= new THREE.PlaneGeometry(40, 40);
-// const textLoader = new THREE.TextureLoader();
-// let texture = textLoader.load("./assets/images/website-qr.png");
-// const planeMat = new THREE.MeshBasicMaterial({
-// 	color:0xeba6f5,
-// 	side: THREE.DoubleSide,
-// 	map:texture
-// });
-// const plane1 = new THREE.Mesh(planeGeo, planeMat);
-// plane1.position.set(15, 50, -30);
-// scene.add(plane1);
-
-// PLANE \ FLOOR
-// const geo = new THREE.PlaneGeometry(2000, 2000, 8, 8);
-// const mat = new THREE.MeshBasicMaterial({color: 0x000000, side: THREE.DoubleSide});
-// var plane = new THREE.Mesh(geo, mat);
-// plane.rotateX( -Math.PI / 2);
-// plane.position.y = -15;
-// scene.add(plane);
-
-
-// TORUS
-// const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);                 //Defines Points, Vertices, Faces. etc
-// const material = new THREE.MeshStandardMaterial( { color: 0xFF6347, wireframe: true} );     //Material for the torus
-// const donut = new THREE.Mesh( geometry, material );                        //Actual mesh object that connects the geometry and gives a material look to it
-//scene.add(donut);                                                          //Adding the torus to the scene
-
 // TEXT
-// const text1 = new Text();
-// text1.text = 'Lake-Fred';
-// text1.fontSize = 10;
-// text1.position.set(-10, 20, -30);
-// text1.color = 0xE34234;
-// scene.add(text1);
+const text1 = new Text();
+text1.text = 'Lake-Fred';
+text1.fontSize = 10;
+text1.position.set(-10, 20, -30);
+text1.color = 0xE34234;
+scene.add(text1);
 
-// LINES
-// const material = new THREE.LineBasicMaterial({color: 0x000ff});
-// const points = [];
-// points.push( new THREE.Vector3(-10,0,0));
-// points.push( new THREE.Vector3(0,10,0));
-// points.push( new THREE.Vector3(10,0,0));
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-// Temporary Point
-// const vertices = [];
-
-// for ( let i = 0; i < 10000; i ++ ) {
-// 	const x = THREE.MathUtils.randFloatSpread( 2000 );
-// 	const y = THREE.MathUtils.randFloatSpread( 2000 );
-// 	const z = THREE.MathUtils.randFloatSpread( 2000 );
-
-// 	vertices.push( x, y, z );
-// }
-
-
-const p1Geo = new THREE.BufferGeometry();
-const verts = new Float32Array([5, 0, 0, 5, -10, 0, 10, -10, 0])
-p1Geo.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
-const p1Mat = new THREE.PointsMaterial({color: 0x888888});
-const p1 = new THREE.Points(p1Geo, p1Mat);
-scene.add(p1);
-=======
-const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-const line = new THREE.Line(lineGeo, material);
-scene.add(line);
-=======
-// const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-// const line = new THREE.Line(lineGeo, material);
-// scene.add(line);
->>>>>>> 84e97f9 (Dev functions, no new docs)
-
-// POINTS
-// Generate a new point 0xFFA500
-function genPoint(x , y, z, color){
-	let pGeo = new THREE.BufferGeometry();
-	pGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array([x,y,z]), 3));
-	let pMat = new THREE.PointsMaterial({ color: '#' + color, size: 3});
-	let point = new THREE.Points(pGeo, pMat);
-	return point;
-}
-
-<<<<<<< HEAD
-const pointGeo = new THREE.BufferGeometry().setFromPoints(vertices);
-const p1Mat = new THREE.PointsMaterial({ color: 0xFFA500 });
-const p1 = new THREE.Points(pointGeo, p1Mat);
-const l1 = new THREE.Line(pointGeo, material);
-scene.add(p1)
-console.log(p1.getWorldPosition)
->>>>>>> e48dc9a (Removed lake, changed desc, docs not update)
-
-const positions = p1.geometry.getAttribute('position').array;
-
-// Iterating over the vertices (every three elements represent a vertex)
-for (let i = 0; i < positions.length; i += 3) {
-    const x = positions[i];
-    const y = positions[i + 1];
-    const z = positions[i + 2];
-
-    // Log or use the coordinates as needed
-    console.log('X:', x);
-    console.log('Y:', y);
-    console.log('Z:', z);
-}
-
-function Delaunay(verts){
-	let lineNum = verts.length  / 3;
-	for(let i = 0; i < lineNum; i+=3){
-		let lineGeo = new THREE.BufferGeometry();
-		if(i == lineNum - 1){
-			// do something
-		}
-		let vertices = new Float32Array(verts.slice(i, i + 6));
+// GLTF (Lake Model) import and creation
+const gltfloader = new GLTFLoader();     
+let lake;
+gltfloader.load(
+	//resource url
+	"./assets/models/lake2.glb",
+	//called when the resource is loaded
+	function( gltf ){
+		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
+		lake.position.set(0, 0, 0);
+		scene.add( gltf.scene );
+	},
+	// Called while loading is progressing
+	function ( xhr ) {
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+	},
+	// Called when loading has errors
+	function ( error ) {
+		console.log( error );
 	}
-}
-
-Delaunay(verts);
-
-// const p1Geo = new THREE.BufferGeometry();
-// p1Geo.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
-// const p1Mat = new THREE.PointsMaterial({ color: 0x888888 });
-// const p1 = new THREE.Points(p1Geo, p1Mat);
-// scene.add(p1);
-=======
-// Creat a line between two specified points
-function drawLine(point1, point2){
-	const points = [];
-	points.push( new THREE.Vector3(point1.position.x, point1.position.y, point1.position.z));
-	points.push( new THREE.Vector3(point2.position.x, point2.position.y, point2.position.z));
-	const lineMaterial = new THREE.LineBasicMaterial({color: 0x000ff});
-	const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
-	const line = new THREE.Line(lineGeometry, lineMaterial);
-	scene.add(line);
-	return line;
-}
-
-//Randomly move all points on the xy plane
-function randomSpawn(points, range){
-	for(let i = 0; i < points.length; i++){
-		points[i].position.set(THREE.MathUtils.randInt(-range,range), THREE.MathUtils.randInt(-range,range), 0);
-	}
-}
-
-// Random hex color generator
-function randomColor(){
-	return Math.floor(Math.random()*16777215).toString(16);
-}
-
-// Move the points given a range (singular val)
-function randomMove(point, range){
-	point.translateX(THREE.MathUtils.randFloatSpread(range + 0.01))
-	point.translateY(THREE.MathUtils.randFloatSpread(range) + 0.01)
-}
-
-// Remove all lines between points
-function removeLines(){
-	for(let i = 0; i < edges.length; i++){
-		scene.remove(edges.pop())
-	}
-}
-
-const vertices = [];
-const edges = [];
-for(let i = 0; i < 1000; i++){
-	vertices.push(genPoint(0, 0, 0, randomColor()));
-}
-for(let i = 0; i < vertices.length; i++){
-	scene.add(vertices[i]);
-}
-randomSpawn(vertices, 100)
-
-
->>>>>>> 84e97f9 (Dev functions, no new docs)
+);
 
 // LIGHTS
 const light1 = new THREE.DirectionalLight(0xffffff, 3);
@@ -265,9 +86,6 @@ function update() {
     //Add anything here to do stuff to box before rendering
 	light3.position.x = Math.sin(Date.now() / 500) / 2 * 150;
 	light4.position.x = Math.sin(Date.now() / 500) / 2 * 150;
-	for(let i = 0; i < vertices.length; i++){
-		randomMove(vertices[i], .1);
-	}
 	controls.update();                                                    // Update oribital controls
 	renderer.render( scene, camera );                                     // Update renderer
 }
@@ -305,9 +123,9 @@ button3.addEventListener('click', () => {
 const checkbox1 = document.getElementById('cam_spin');
 checkbox1.addEventListener('click', function() {
 	if(checkbox1.checked){
-		controls.autoRotate = false;
-	}else{
 		controls.autoRotate = true;
+	}else{
+		controls.autoRotate = false;
 	}
 });
 
