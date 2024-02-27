@@ -42,6 +42,7 @@ let lake;
 gltfloader.load(
 	//resource url
 	"../assets/models/lake2.glb",
+	
 	//called when the resource is loaded
 	function( gltf ){
 		lake = gltf.scene;          // Store the THREE.Scene to use elsewhere
@@ -106,6 +107,21 @@ function onWindowResize(){
 	renderer.setSize(divWidth, window.innerHeight/resize_scale);
 }
 
+
+// Toggle Wireframe
+const button1 = document.querySelector('#wireframe_toggle');
+button1.addEventListener('click', () =>{
+	lake.traverse((obj) => {
+		if(obj.isMesh && obj.material instanceof THREE.MeshStandardMaterial){
+			if (obj.material.wireframe){
+				obj.material.wireframe = false;
+			}else{
+				obj.material.wireframe = true;
+			}
+		}
+	});
+});
+
 // Toggle lights
 const button2 = document.querySelector('#light_toggle');
 button2.addEventListener('click', () => {
@@ -122,11 +138,13 @@ button2.addEventListener('click', () => {
 	}
 });
 
+// Reset Camera
 const button3 = document.querySelector('#reset_camera');
 button3.addEventListener('click', () => {
 	controls.reset();
 });
 
+// Toggle rotation
 const checkbox1 = document.getElementById('cam_spin');
 checkbox1.addEventListener('click', function() {
 	if(checkbox1.checked){
@@ -135,6 +153,7 @@ checkbox1.addEventListener('click', function() {
 		controls.autoRotate = false;
 	}
 });
+
 
 // Update
 update();

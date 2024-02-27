@@ -8,7 +8,7 @@
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 2.5s steps(8),
+    animation: typing 2.5s steps(13),
                cursor .4s step-end infinite alternate;
     animation-fill-mode: forwards;
 }
