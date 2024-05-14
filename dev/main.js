@@ -41,7 +41,7 @@ const gltfloader = new GLTFLoader();
 let lake;
 gltfloader.load(
 	//resource url
-	"../assets/models/lake2.glb",
+	"assets/lake2.glb",
 	
 	//called when the resource is loaded
 	function( gltf ){
