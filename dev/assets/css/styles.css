@@ -9,7 +9,7 @@
     color: #C5CBE3;
 }
 
-.headings{
+.heading-color{
     font-family: 'Poppins';
     color: #F13C20;
 }
@@ -24,4 +24,11 @@
 .text-color{
     font-family: 'Poppins';
     color: #65867b !important;
+}
+
+.card{
+    height: 300px;
+    width: 500px;
+    max-width: 350px;
+    min-height: 400px;
 }
