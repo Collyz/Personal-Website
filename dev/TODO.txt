@@ -3,6 +3,7 @@
  ------ IDEAS for the card, 
         pacman going across using the library
         random circles and lines connecting to emulate an FA
+- TYPO in third card
 
 -------- REMOVE --------
 The lake fred can be removed since linking to the offical lake fred research page / my dedicated page on it

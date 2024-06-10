@@ -9,7 +9,7 @@ const resizingDiv = document.getElementById('card-div');
 const canvas = document.getElementById('card-scene');
 let divWidth = resizingDiv.clientWidth; 
 let divHeight = 148;
-
+console.log(divWidth);
 // INSTANTIATIONS
 const resize_scale = 1.3;
 const scene = new THREE.Scene(0xffffff);                                                                   // SCENE
@@ -163,18 +163,18 @@ function onWindowResize(){
 
 
 // Toggle Wireframe
-const button1 = document.querySelector('#wireframe_toggle');
-button1.addEventListener('click', () =>{
-	lake.traverse((obj) => {
-		if(obj.isMesh && obj.material instanceof THREE.MeshStandardMaterial){
-			if (obj.material.wireframe){
-				obj.material.wireframe = false;
-			}else{
-				obj.material.wireframe = true;
-			}
-		}
-	});
-});
+// const button1 = document.querySelector('#wireframe_toggle');
+// button1.addEventListener('click', () =>{
+// 	lake.traverse((obj) => {
+// 		if(obj.isMesh && obj.material instanceof THREE.MeshStandardMaterial){
+// 			if (obj.material.wireframe){
+// 				obj.material.wireframe = false;
+// 			}else{
+// 				obj.material.wireframe = true;
+// 			}
+// 		}
+// 	});
+// });
 
 
 // Update
