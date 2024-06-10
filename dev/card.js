@@ -8,8 +8,7 @@ import { div } from 'three/examples/jsm/nodes/Nodes.js';
 const resizingDiv = document.getElementById('card-div');
 const canvas = document.getElementById('card-scene');
 let divWidth = resizingDiv.clientWidth; 
-let divHeight = resizingDiv.clientHeight;
-console.log(divHeight);
+let divHeight = 148;
 
 // INSTANTIATIONS
 const resize_scale = 1.3;
@@ -157,8 +156,6 @@ window.addEventListener('resize', onWindowResize, false);                 // Win
 function onWindowResize(){
 	// Changing the camera aspect ratio and renderer
 	divWidth = resizingDiv.clientWidth;
-    divHeight = resizingDiv.clientHeight
-    console.log(divHeight);
 	camera.aspect = divWidth / divHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize(divWidth, divHeight);
