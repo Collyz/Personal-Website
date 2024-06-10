@@ -1,0 +1,14 @@
+- Sources background is white, make it the same as everything else
+- Flesh out the cards more, second card needs a p5.js canvas 
+ ------ IDEAS for the card, 
+        pacman going across using the library
+        random circles and lines connecting to emulate an FA
+
+-------- REMOVE --------
+The lake fred can be removed since linking to the offical lake fred research page / my dedicated page on it
+Fix dev folder so that it's a lot cleaner, empty folders and the works, can be simplified
+
+
+-------- ADD --------
+Contact blurb with border around it 
+MORE CARDS???????????? (Lets finish that C++ drawing library first)
