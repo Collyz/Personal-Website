@@ -6,13 +6,15 @@
     <title>Collyz Website</title>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.js"></script>
+    <script src="assets/pacman.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script type="module" crossorigin src="./assets/index-BLOum5iJ.js"></script>
+  <script type="module" crossorigin src="./assets/index-CaBYLMko.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-D5kmf9PA.css">
 </head>
 <body class="background">
   <!--Navbar-->
-  <nav id="navbar" class="navbar navbar-expand-lg fixed-top py-0 border-bottom border-4 border-dark">
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top py-0 border-bottom border-4 border-dark background">
     <div class="container-fluid nav-color py-1 text-color background" >
         <!--Main Page Title-->
         <a class="navbar-brand text-color" href="index.html">Mohammed Mowla</a>
@@ -21,19 +23,31 @@
         </button>
         <!--The rest of navbar-->
         <div class="collapse navbar-collapse text-color" id="navbarSupportedContent">
-            <!--Collapsing navigation bar section-->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!--Nav Item-->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-color" href="https://github.com/Collyz">GitHub 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                stroke-linejoin="round" class="feather feather-github">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 
+                6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 
+                0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path></svg></a> 
+            </li>
+          </ul>
+            <!-- FOR REMOVAL -->
+            <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-color" href="#" role="button" data-bs-toggle="dropdown">
                         Source
                     </a>
-                    <ul class="dropdown-menu text-center nav-color">
+                    <ul class="dropdown-menu text-center nav-color ">
                         <li>
                             <a class="dropdown-item text-color" aria-current="page" href="https://github.com/Collyz" target="_blank">My GitHub <i class="bi bi-github"></i></a>
                         </li>
                     </ul> 
                 </li>                
-            </ul>
+            </ul> -->
             <!-- <form class="form-check form-switch">
                 <label id="bright-switch-label" for="bright-switch">Light Mode</label>
                 <input class="form-check-input" checked type="checkbox" role="switch" id="bright-switch" onclick="brightness()">
@@ -71,7 +85,7 @@
 
     <a id="proj1" class="card border background text-center text-color mb-5" href="https://collyz.github.io/Lake-Fred/">
       Performed a Delaunay Triangulation on Stockton University's Lake Fred utilizing Blender and Python on geospatial data that was collected on the lake. 
-      You can find out more by clicking the card!
+      You can find out more by clicking the card! [Research]
       <div id="card-div" class="mt-3 border" style="max-height: 150px; min-height: 150px;">
         <canvas id="card-scene"></canvas>
       </div>
@@ -79,18 +93,29 @@
 
     <a id="proj2" class="card border background text-center text-color mb-5" href="https://collyz.github.io/Theory_Of_Computation_Final_Project/">
       Applied the p5.js library to create a Finite Automata (FA) designer that allows you to build a FA by hand that takes input strings into the program to be parsed. 
-      <br>
-      (Final Project for Theory of Computation)
+      [Final Project for Theory of Computation]
+      <div id="canvasContainer" class="container text-center mt-3">
+      </div>
     </a>
 
     <a id="proj3" class="card border background text-center text-color mb-5" href="https://github.com/Collyz">
-      Explore my github for the my latest and projects that don't have a dedicated website to them.
+      Explore my github for the my latest projects that don't have a dedicated website to them.
+      <br>
+      <br>
+      Highlights: 
+      <hr>
+      <ul>
+        <li>Inventory Desktop Application [SWE Project]</li>
+        <li>Probablity and Statistics Library [Prob Stats Project]</li>
+        <li>Syntax Type - A PHP based typeracer [Web App Engineering Project]</li>
+      </ul>
     </a>
 
   </div>
 
+  <!-- MARKED FOR DELETION-->
   <!--Controls and Scene for Lake Fred-->
-  <div id="controls" class="container text-center my-0 text-color">
+  <!-- <div id="controls" class="container text-center my-0 text-color">
     <div class="dropdown text-start">
       <div class="d-flex align-items-center">
         <button class="btn btn-secondary dropdown-toggle background" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -104,16 +129,16 @@
         <input  type="checkbox" name="spin" id="cam_spin">
       </div>
       
-      <!--Three.js Scene-->
+      Three.js Scene
       <div id='scene_div' class="border border-primary mb-5">
         <canvas id="scene" class="my-3"></canvas>
       </div>
       
     </div>
-  </div>
+  </div> -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
+  <!-- <script type="module" src="main.js"></script> -->
 
   </body>
 </html> 
