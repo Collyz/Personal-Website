@@ -1,3 +1,0 @@
--------- ADD --------
-Contact blurb with border around it 
-MORE CARDS???????????? (Lets finish that C++ drawing library first)
