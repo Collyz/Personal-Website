@@ -1,38 +1,36 @@
+<style>
+  .ml3 {
+    font-weight: 900;
+  }
+</style>
+
 <script>
   import Navbar from './Navbar.svelte';
-  import Background from './Background.svelte';
   import anime from 'animejs/lib/anime.es.js';
-  import {onMount} from 'svelte';
+  import { onMount } from 'svelte';
 
-
-  onMount(() =>{
+  onMount(() => {
     // Wrap every letter in a span
     var textWrapper = document.querySelector('.ml3');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    if (textWrapper) {
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-    anime.timeline({loop: false})
-      .add({
-        targets: '.ml3 .letter',
-        scale: [4,1],
-        opacity: [0,1],
-        translateZ: 0,
-        easing: "easeInBounce",
-        duration: 2500,
-        delay: (el, i) => 500*i
-      });
+      anime.timeline({loop: false})
+        .add({
+          targets: '.ml3 .letter',
+          scale: [4, 1],
+          opacity: [0, 1],
+          translateZ: 0,
+          easing: "easeInBounce",
+          duration: 2500,
+          delay: (el, i) => 500 * i
+        });
+    }
   });
 </script>
 
-<style>
-  .ml3 {
-  font-weight: 900;
-}
-</style>
-
 <Navbar />
 
-<Background />
-    
 <main class="flex flex-col items-center justify-center min-h-full pt-32">
   <p class="text-2xl pt-16">Hello there,</p>
   <h1 class="text-4xl sm:text-6xl py-5  ml3">I'm&nbsp;Mohammed</h1>

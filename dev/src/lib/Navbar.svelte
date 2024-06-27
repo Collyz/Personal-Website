@@ -1,31 +1,30 @@
 <script>
     import { onMount } from 'svelte';
-    const pages = {
-        'index.html'   : ['home'    , 'home-s'],
-        'projects.html': ['proj', 'proj-s'],
-        'contact.html' : ['cont' , 'cont-s'],
-        'resume.html'  : ['res'  , 'res-s']
-    }
+
     let isMenuOpen = false;
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
-        let id2 = document.getElementById(pages[page][1]);
-        if(id2 != null){
-            id2.style.textDecoration = 'underline';
-            id2.style.textUnderlineOffset = '8px'
-            console.log('yeah')
-        }
     }
     // Underline current page
     let path = window.location.pathname;
     let page = path.split("/").pop();
     onMount(() =>{
-        let id1 = document.getElementById(pages[page][0]);
-        // let id2 = document.getElementById(pages[page][1]);
-        if(id1 != null){
+        const pages = {
+        'index.html'   : ['home'    , 'home-s'],
+        'projects.html': ['proj', 'proj-s'],
+        'contact.html' : ['cont' , 'cont-s'],
+        'resume.html'  : ['res'  , 'res-s']
+        }
+        let id1 = null;
+        if(page == ""){
+            id1 = document.getElementById(pages['index.html'][0]);
             id1.style.textDecoration = 'underline';
-            id1.style.textUnderlineOffset = '8px'
+            id1.style.textUnderlineOffset = '8px';
+        } else{
+            id1 = document.getElementById(pages[page][0]);
+            id1.style.textDecoration = 'underline';
+            id1.style.textUnderlineOffset = '8px';
         }
     });
     
