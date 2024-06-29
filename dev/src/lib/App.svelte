@@ -38,7 +38,7 @@
     <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yelllow"></circle>
   </svg> -->
   <p class="text-center text-lg px-16 pt-3">
-    I'm a recent graduate from Stockton University with a Bachelor of Science of Computer Science currently interning at the FAA where I perform automation testing.
+    I'm a recent graduate from Stockton University with a Bachelor of Science in Computer Science currently interning at FAA where I perform automation testing.
   </p>
 </main>
 
