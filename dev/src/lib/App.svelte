@@ -7,6 +7,7 @@
 <script>
   import Navbar from './Navbar.svelte';
   import anime from 'animejs/lib/anime.es.js';
+  import DiCode from 'svelte-icons/di/DiCode.svelte';
   import { onMount } from 'svelte';
 
   onMount(() => {
@@ -37,6 +38,7 @@
   <p class="text-center text-lg px-16 pt-3">
     I earned my Bachelors of Science in Computer Science in spring of 2024 and am currently working for the FAA as a contractor through LS Technologies
   </p>
+  <DiCode />
 </main>
 
 <!-- <div class="flex justify-center break-all">
