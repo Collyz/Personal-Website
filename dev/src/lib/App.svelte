@@ -34,11 +34,8 @@
 <main class="flex flex-col items-center justify-center min-h-full pt-32">
   <p class="text-2xl pt-16">Hello there,</p>
   <h1 class="text-4xl sm:text-6xl py-5  ml3">I'm&nbsp;Mohammed</h1>
-  <!-- <svg class="absolute min-w-full min-h-full">
-    <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yelllow"></circle>
-  </svg> -->
   <p class="text-center text-lg px-16 pt-3">
-    I'm a recent graduate from Stockton University with a Bachelor of Science in Computer Science currently interning at FAA where I perform automation testing.
+    I earned my Bachelors of Science in Computer Science in spring of 2024 and am currently working for the FAA as a contractor through LS Technologies
   </p>
 </main>
 
