@@ -22,7 +22,6 @@
     link = {"https://collyz.github.io/Theory_Of_Computation_Final_Project/"}/>
     <Card 
     title={"Github"}
-    
     text={"Explore my github for the projects that don't have a dedicated website to them.<br><br><p class='text-xl pb-2'>Highlights: </p><hr><ul><li class='py-1'>Inventory Desktop Application [SWE Project]</li><li class='py-1'>Probablity and Statistics Library [Prob Stats Project]</li><li class='py-1'>Syntax Type - A PHP based typeracer [Web App Engineering Project]</li></ul></a>"} 
     link = {"https://github.com/Collyz"}/>
 </div>

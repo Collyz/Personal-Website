@@ -36,9 +36,9 @@
         }
 
         hide(){
-            this.colorR = 93;
-            this.colorG = 140;
-            this.colorB = 104;
+            this.colorR = 182;
+            this.colorG = 207;
+            this.colorB = 182;
         }
     }
 
@@ -53,7 +53,7 @@
 
       p5.draw = () => {
 
-          p5.background('#5d8c68');
+          p5.background('#B6CFB6');
 
           for(let i = 0; i < pellets.length; i++){
             pellets[i].display();
@@ -144,9 +144,9 @@
         </h1>
     {/if}
     
-    <div class="border rounded-lg text-center text-wrap p-2">
-        <div id='p5-div'class="border rounded-lg text-center bg-green-800 opacity-90 min-h-[350px] p-5">
-              <div class="border mt-1">
+    <div class="border border-custom-green-border rounded-lg text-center text-wrap p-2">
+        <div id='p5-div'class="border border-custom-green-border rounded-lg text-center min-h-[350px] p-5">
+              <div class="border border-custom-green-border mt-1">
                 <P5 {sketch} />
               </div>
             <p class="pt-5">{@html text}</p>

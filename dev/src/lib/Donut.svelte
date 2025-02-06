@@ -41,7 +41,7 @@
         camera.position.set(0, 0, 25);
         camera.lookAt(0, 0, 0);
 
-        scene.background = new THREE.Color(0x5d8c68);
+        scene.background = new THREE.Color(0xB6CFB6);
 
         const light1 = new THREE.DirectionalLight(0xffffff, 2.3);
         const light2 = new THREE.DirectionalLight(0xffffff, 2.3);
@@ -60,7 +60,7 @@
         const torus = new THREE.Mesh(torusGeo, torusMat);
 
         const wireframeMat = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
+            color: 0x97C1A9,
             wireframe: true
         });
         const torusWireframe = new THREE.Mesh(torusGeo, wireframeMat);
@@ -173,9 +173,9 @@
         </h1>
     {/if}
     
-    <div class="border rounded-lg text-center text-wrap p-2">
-        <div class="border rounded-lg text-center bg-green-800 opacity-90 min-h-[350px] p-5">
-            <div id="card-div" class="mt-1 border" style="max-height: 162px; min-height: 162px;">
+    <div class="border border-custom-green-border rounded-lg text-center text-wrap p-2">
+        <div class="border border-custom-green-border rounded-lg text-center min-h-[350px] p-5">
+            <div id="card-div" class="mt-1 border border-custom-green-border" style="max-height: 162px; min-height: 162px;">
                 <canvas id="card-scene"></canvas>
             </div>
             <p class="pt-5">{@html text}</p>

@@ -8,7 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        'green-950': '#000000',
+        'green-950': '#CCE2CB',
+      },
+      borderColor: {
+        'custom-green-border': '#97C1A9',
       }
     }
     
@@ -16,7 +19,7 @@ export default {
   plugins: [
     plugin(({addBase, theme}) => {
       addBase({
-        'html': {color: theme('colors.green.300')},
+        'html': {color: theme('colors.green.900')},
       });
     })
   ],
