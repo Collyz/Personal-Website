@@ -30,8 +30,12 @@
 
 <Navbar />
 
-<main class="flex flex-col items-center justify-center min-h-full pt-32">
-  <p class="text-2xl pt-16">Hello there,</p>
+<main class="flex flex-col items-center justify-center min-h-full pt-12">
+
+  <div class="flex flex-col items-center justify-center min-h-full pt-12 border rounded-lg">
+    <p class="text-center text-lg px-16 pt-3">test</p>
+  </div>
+  <p class="text-2xl">Hello there,</p>
   <h1 class="text-4xl sm:text-6xl py-5  ml3">I'm&nbsp;Mohammed</h1>
   <p class="text-center text-lg px-16 pt-3">
     I earned my Bachelors of Science in Computer Science in spring of 2024 and am currently working for the FAA as a contractor through LS Technologies
