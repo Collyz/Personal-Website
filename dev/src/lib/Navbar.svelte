@@ -32,14 +32,13 @@
 
 <nav class="flex p-4">
     <div class="justify-start">
-        <a id="home" class="hover:opacity-55 text-lg" href="./index.html">Mohammed Mowla</a>
-    </div>
-    <div class="flex-1 hidden md:flex justify-end">
-        <!-- <a class="px-3 text-lg hover:opacity-55" href="./experience.html">Experience</a> -->
-        <a id="proj" class="px-3 text-lg hover:opacity-55" href="./projects.html">Projects</a>
-        <a id="cont" class="px-3 text-lg hover:opacity-55" href="./contact.html">Contact</a>
-        <a id="res" class="px-3 text-lg hover:opacity-55" href="./resume.html">Resume</a>
         
+    </div>
+    <div class="flex-1 hidden md:flex justify-center">
+        <a id="home" class="px-3 text-lg hover:opacity-55" href="./index.html">Home</a>
+        <a id="proj" class="px-3 text-lg hover:opacity-55" href="./projects.html">Projects</a>
+        <!-- <a id="cont" class="px-3 text-lg hover:opacity-55" href="./contact.html">Contact</a> -->
+        <a id="res" class="px-3 text-lg hover:opacity-55" href="./resume.html">Resume</a>
     </div>
     <div class="flex-1 md:hidden flex pr-6 justify-end">
         <button on:click={toggleMenu}>
@@ -50,9 +49,9 @@
 
 {#if isMenuOpen}
 <div class="flex-1 md:hidden bg-green-950 justify-end">
-    <!-- <a class="block px-3 py-2 text-lg hover:opacity-55" href="./experience.html">Experience</a> -->
+    <a id="home-s" class="px-3 text-lg hover:opacity-55" href="./index.html">Home</a>
     <a id='proj-s' class="block px-3 py-2 text-lg hover:opacity-55" href="./projects.html">Projects</a>
-    <a id='cont-s' class="block px-3 py-2 text-lg hover:opacity-55" href="./contact.html">Contact</a>
+    <!-- <a id='cont-s' class="block px-3 py-2 text-lg hover:opacity-55" href="./contact.html">Contact</a> -->
     <a id='res-s' class="block px-3 py-2 text-lg hover:opacity-55" href="./resume.html">Resume</a>
 </div>
 {/if}

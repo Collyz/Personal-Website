@@ -30,16 +30,36 @@
 
 <Navbar />
 
-<main class="flex flex-col items-center justify-center min-h-full pt-12">
-
-  <div class="flex flex-col items-center justify-center min-h-full pt-12 border rounded-lg">
-    <p class="text-center text-lg px-16 pt-3">test</p>
+<main class="flex flex-col items-center justify-center min-h-full pt-12 px-12 py-12">
+  <div class="flex flex-wrap items-center  border border-2 rounded-3xl px-5">
+    <div class="flex flex-col items-start py-6 max-w-4xl">
+      <p class="text-2xl px-5 ">Hello there,</p>
+      <h1 class="text-4xl sm:text-6xl py-5 px-5 ml3">I'm&nbsp;Mohammed</h1>
+      <p class=" text-lg px-5 pt-3">
+        I earned my Bachelors of Science in Computer Science in Spring of 2024 and am currently working for the FAA as a contractor through LS Technologies
+      </p>
+    </div>
+    <div class="flex flex-col items-center text-center">
+      <p class="text-2xl px-5 py-5">Socials</p>
+      <a href="https://www.linkedin.com/in/mmowla/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline-block">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+        </svg> - LinkedIn</a>
+        <br>
+      <a href="https://github.com/Collyz" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="size-6 inline-block" viewBox="0 0 17 17">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+        </svg> - Github</a>
+      <!-- <a href="mailto:m.mowla03151@gmail.com" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline-block">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+        </svg> - Email</a> -->
+        <br>
+        <br>
+    </div>
   </div>
-  <p class="text-2xl">Hello there,</p>
-  <h1 class="text-4xl sm:text-6xl py-5  ml3">I'm&nbsp;Mohammed</h1>
-  <p class="text-center text-lg px-16 pt-3">
-    I earned my Bachelors of Science in Computer Science in spring of 2024 and am currently working for the FAA as a contractor through LS Technologies
-  </p>
+  
+  
 </main>
 
 <!-- <div class="flex justify-center break-all">
