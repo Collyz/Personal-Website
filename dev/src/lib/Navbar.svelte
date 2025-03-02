@@ -34,17 +34,17 @@
     <div class="justify-start">
         
     </div>
-    <div class="flex-1 hidden md:flex justify-center">
-        <a id="home" class="px-3 text-lg hover:opacity-55" href="./index.html">Home</a>
-        <a id="proj" class="px-3 text-lg hover:opacity-55" href="./projects.html">Projects</a>
+    <div class="flex-1 flex justify-center lg:text-2xl sm:text-md">
+        <a id="home" class="px-3 hover:opacity-55" href="./index.html">Home</a>
+        <a id="proj" class="px-3 hover:opacity-55" href="./projects.html">Projects</a>
         <!-- <a id="cont" class="px-3 text-lg hover:opacity-55" href="./contact.html">Contact</a> -->
-        <a id="res" class="px-3 text-lg hover:opacity-55" href="./resume.html">Resume</a>
+        <a id="res" class="px-3 hover:opacity-55" href="./resume.html">Resume</a>
     </div>
-    <div class="flex-1 md:hidden flex pr-6 justify-end">
+    <!-- <div class="flex-1 md:hidden flex pr-6 justify-end">
         <button on:click={toggleMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
-    </div>
+    </div> -->
 </nav>
 
 {#if isMenuOpen}

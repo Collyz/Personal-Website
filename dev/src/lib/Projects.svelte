@@ -4,14 +4,12 @@
     import Pacman from './Pacman.svelte';
     import Card from './Card.svelte';
 </script>
-  
-<Navbar />
 
 <p class="flex justify-center tracking-tight text-4xl py-8">
     Projects
 </p>
 
-<div id="card-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-12 px-4 md:px-24">
+<div id="card-container" class="grid grid-cols-1 md:grid-cols-3 gap-0 px-500 md:px-60 place-items-center">
     <Donut 
      title = {"Lake Fred Research"}
      text={"Performed a Delaunay Triangulation on Stockton University's Lake Fred utilizing Blender and Python on geospatial data that was collected on the lake. <br> [Research]"}

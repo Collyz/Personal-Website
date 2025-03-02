@@ -17,8 +17,8 @@
         </h1>
     {/if}
     
-    <div class="border border-custom-green-border rounded-lg text-center text-wrap p-2">
-        <div class="border border-custom-green-border rounded-lg text-center min-h-[350px] p-5">
+    <div class="border border-custom-green-border rounded-lg text-center text-wrap p-2 max-w-80">
+        <div class="border border-custom-green-border rounded-lg text-center min-h-[350px] p-5 max-w-80">
             <p>{@html text}</p>
         </div>
         
