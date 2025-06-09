@@ -1,27 +1,16 @@
 'use client';
-import React, { ReactNode, useRef} from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Suspense } from 'react';
-import SpinningCube from '../components/Orbit';
+import React, { ReactNode} from 'react';
+import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import * as THREE from 'three';
+import { SpinningCube, Spheres} from '../components/Orbit';
+import Navbar from '../components/Navbar';
 
 
 
 
 
-function Navbar() {
-  return ( 
-    <nav className="flex justify-center items-center p-4 py-24">
-      <ul className="flex gap-8 text-lg">
-        <li><a href="/" className="hover:underline hover:bg-sky-700">Home</a></li>
-        <li><a href="/about" className="hover:underline hover:bg-sky-700">About</a></li>
-        <li><a href="/projects" className="hover:underline">Projects</a></li>
-        <li><a href="/contact" className="hover:underline">Contact</a></li>
-      </ul>
-    </nav>
-  );
-}
+
+
 
 type CardProps = {
   title: string;
@@ -68,20 +57,21 @@ export default function HomeContent() {
           /> */}
           <div className="fixed inset-0 w-screen h-screen">
             <Canvas
-              camera={{ position: [5, 5, 5], fov: 75 }}
+              camera={{ position: [0, 0, 25], fov: 75 }}
               style={{
-                width: '100vw',
-                height: '100vh',
                 backgroundColor: 'transparent',
+              }}
+              onCreated={({ camera }) => {
+                camera.lookAt(0, 0, 0); // 👈 Make sure it looks at the boat
               }}
             >
               <ambientLight intensity={0.5} />
               <directionalLight position={[5, 5, 5]} intensity={1} />
-              <OrbitControls />
-              <SpinningCube />
+              <OrbitControls enableDamping={true} enableRotate={true}/>
+              {/* <SpinningCube /> */}
+              <Spheres />
             </Canvas>
           </div>
-
 
         </div>
       </main>
