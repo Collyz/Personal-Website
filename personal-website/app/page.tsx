@@ -2,14 +2,8 @@
 import React, { ReactNode} from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { SpinningCube, Spheres} from '../components/Orbit';
+import { AnimatedTorus} from '../components/ThreeVisuals';
 import Navbar from '../components/Navbar';
-
-
-
-
-
-
 
 
 type CardProps = {
@@ -55,9 +49,9 @@ export default function HomeContent() {
             description="Get in touch with me."
             href="/contact"
           /> */}
-          <div className="fixed inset-0 w-screen h-screen">
+          <div className="fixed inset-0 w-screen h-screen -z-1">
             <Canvas
-              camera={{ position: [0, 0, 25], fov: 75 }}
+              camera={{ position: [0, 0, 25], fov: 90 }}
               style={{
                 backgroundColor: 'transparent',
               }}
@@ -69,7 +63,9 @@ export default function HomeContent() {
               <directionalLight position={[5, 5, 5]} intensity={1} />
               <OrbitControls enableDamping={true} enableRotate={true}/>
               {/* <SpinningCube /> */}
-              <Spheres />
+              <AnimatedTorus startAngle={[0, 0, 0]}/>
+              <AnimatedTorus startAngle={[90, 0, 0]} position={[8, 3, 0]} />
+              <AnimatedTorus startAngle={[90, 0, 0]} position={[-8, -3, 0]} />
             </Canvas>
           </div>
 
