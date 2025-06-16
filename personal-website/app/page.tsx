@@ -2,7 +2,7 @@
 import React, { ReactNode} from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { AnimatedTorus} from '../components/ThreeVisuals';
+import { AnimatedTorus, OrbitTori} from '../components/ThreeVisuals';
 import Navbar from '../components/Navbar';
 
 
@@ -51,21 +51,18 @@ export default function HomeContent() {
           /> */}
           <div className="fixed inset-0 w-screen h-screen -z-1">
             <Canvas
-              camera={{ position: [0, 0, 25], fov: 90 }}
+              camera={{ position: [0, 0, 25], fov: 120 }}
               style={{
                 backgroundColor: 'transparent',
               }}
               onCreated={({ camera }) => {
-                camera.lookAt(0, 0, 0); // 👈 Make sure it looks at the boat
+                camera.lookAt(0, 0, 0);
               }}
             >
-              <ambientLight intensity={0.5} />
+              <ambientLight intensity={1} />
               <directionalLight position={[5, 5, 5]} intensity={1} />
               <OrbitControls enableDamping={true} enableRotate={true}/>
-              {/* <SpinningCube /> */}
-              <AnimatedTorus startAngle={[0, 0, 0]}/>
-              <AnimatedTorus startAngle={[90, 0, 0]} position={[8, 3, 0]} />
-              <AnimatedTorus startAngle={[90, 0, 0]} position={[-8, -3, 0]} />
+              <OrbitTori />
             </Canvas>
           </div>
 
