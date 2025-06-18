@@ -37,28 +37,28 @@ useFrame(() => {
   return(
     <mesh ref={meshRef} scale={scale} rotation={[0, startAngle, 0]}>
       <torusGeometry args={[7.5, 1.75, 16, 100]}/>
-      <meshStandardMaterial color={color} wireframe={true}/>
+      <meshStandardMaterial color={color} wireframe={false}/>
     </mesh>
   )
 }
 
 export function OrbitTori() {
   const groupRef = useRef<THREE.Group>(null);
-  const count = 8;
-  const radiusRef = useRef(15);
+  const count = useRef(120);
+  const radiusRef = useRef(12);
   const orbitDirection = useRef(-1);
 
   const angleRefs = useMemo(
     () =>
-      Array.from({ length: count }).map((_, i) => ({
-        current: (i / count) * Math.PI * 2,
+      Array.from({ length: count.current }).map((_, i) => ({
+        current: (i / count.current) * Math.PI * 2,
       })),
     [count]
   );
 
   useFrame(() => {
     radiusRef.current += 0.05 * orbitDirection.current;
-    if (radiusRef.current >= 15 || radiusRef.current <= 7) {
+    if (radiusRef.current >= 15 || radiusRef.current <= 2) {
       orbitDirection.current *= -1;
     }
     if (groupRef.current) {
@@ -73,7 +73,7 @@ export function OrbitTori() {
           key={i}
           angleRef={angleRef}
           radiusRef={radiusRef}
-          color={`hsl(${i * 45}, 80%, 60%)`}
+          color={`hsl(${i * 3}, 80%, 60%)`}
           startAngle={(i / angleRefs.length) * Math.PI * 2}
         />
       ))}
