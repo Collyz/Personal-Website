@@ -1,7 +1,12 @@
 'use client'
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+
 
 export function Navbar() {
+  const pathname = usePathname();
+  // Arrow func with conditional to check input string to add underline styling
+  const linkClass = (path: string) => `hover:underline ${pathname === path ? 'underline decoration-2 underline-offset-4' : ''}`;
   return (
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
@@ -10,10 +15,10 @@ export function Navbar() {
       className="flex justify-center items-center p-4 py-24"
     >
       <ul className="flex gap-6 text-lg">
-        <li><a href="/" className="hover:underline">Home</a></li>
-        <li><a href="/experience" className="hover:underline">Experience</a></li>
-        <li><a href="/projects" className="hover:underline">Projects</a></li>
-        <li><a href="/resume" className="hover:underline">Resume</a></li>
+        <li><a href="/" className={linkClass('/')}>Home</a></li>
+        <li><a href="/experience" className={linkClass('/experience')}>Experience</a></li>
+        <li><a href="/projects" className={linkClass('/projects')}>Projects</a></li>
+        <li><a href="/resume" className={linkClass('/resume')}>Resume</a></li>
       </ul>
     </motion.nav>
   );
