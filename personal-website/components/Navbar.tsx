@@ -11,9 +11,9 @@ export function Navbar() {
     >
       <ul className="flex gap-6 text-lg">
         <li><a href="/" className="hover:underline">Home</a></li>
-        <li><a href="/experiences" className="hover:underline">Experience</a></li>
+        <li><a href="/experience" className="hover:underline">Experience</a></li>
         <li><a href="/projects" className="hover:underline">Projects</a></li>
-        <li><a href="/contact" className="hover:underline">Resume</a></li>
+        <li><a href="/resume" className="hover:underline">Resume</a></li>
       </ul>
     </motion.nav>
   );
