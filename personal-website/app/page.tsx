@@ -9,9 +9,7 @@ import { motion } from 'framer-motion';
 
 
 export default function HomeContent() {
-  const oceanRef = React.useRef<any>(null);
   return (
-  
   <div>
     <Navbar />
       <main className="flex flex-col gap-[32px] row-start-2 items-center">
