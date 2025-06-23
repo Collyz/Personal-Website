@@ -44,7 +44,7 @@ useFrame(( { clock }) => {
     const elapsedTime = clock.getElapsedTime() - startTimeRef.current;
 
     // Controls opacity with a delay
-    if (materialRef.current && elapsedTime > 3) {
+    if (materialRef.current && elapsedTime > 2) {
       if (materialRef.current) {
         if (materialRef.current.opacity != 1) {
           materialRef.current.opacity += 0.005

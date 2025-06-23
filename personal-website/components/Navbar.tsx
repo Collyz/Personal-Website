@@ -11,7 +11,7 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: .7, duration: 1.8, ease: "easeOut" }}
+      transition={{ delay: .3, duration: 1.3, ease: "easeOut" }}
       className="flex justify-center items-center p-4 py-24"
     >
       <ul className="flex gap-6 text-lg">

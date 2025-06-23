@@ -17,7 +17,7 @@ export default function HomeContent() {
           <motion.h1 
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 2, duration: 1.8, ease: "easeOut" }}
+            transition={{ delay: 1, duration: 1.3, ease: "easeOut" }}
             className="text-2xl lg:text-4xl">
               I'm Mohammed Mowla, a Computer Scientist at the FAA
           </motion.h1>
