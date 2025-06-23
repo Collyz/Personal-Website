@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 type CardProps = {
   title: string;
   description: string;

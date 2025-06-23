@@ -2,8 +2,6 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { start } from 'repl';
-import { group } from 'console';
 
 
 export function AnimatedTorus({
@@ -38,6 +36,7 @@ useFrame(( { clock }) => {
       meshRef.current.rotation.x += .01;
     }
 
+    // Delay fade in
     if (startTimeRef.current === null) {
       startTimeRef.current = clock.getElapsedTime()
     }
@@ -49,10 +48,8 @@ useFrame(( { clock }) => {
         if (materialRef.current.opacity != 1) {
           materialRef.current.opacity += 0.005
         }
+      }
     }
-    }
-
-    
   });
 
   return(
