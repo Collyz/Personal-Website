@@ -1,8 +1,9 @@
 'use client';
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { start } from 'repl';
+import { group } from 'console';
 
 
 export function AnimatedTorus({
@@ -43,10 +44,12 @@ useFrame(() => {
 }
 
 export function OrbitTori() {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<THREE.Group>(null)
   const count = useRef(120);
   const radiusRef = useRef(12);
   const orbitDirection = useRef(-1);
+
+
 
   const angleRefs = useMemo(
     () =>
@@ -63,6 +66,13 @@ export function OrbitTori() {
     }
     if (groupRef.current) {
       groupRef.current.rotateZ(0.005);
+    }
+
+  });
+
+  useEffect(() => {
+    if (groupRef.current) {
+      groupRef.current.position.y = -7;
     }
   });
 
