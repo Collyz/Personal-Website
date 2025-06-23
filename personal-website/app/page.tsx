@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { OrbitTori } from '../components/ThreeVisuals';
 import { Navbar } from '../components/Navbar';
-
+import { motion } from 'framer-motion';
 
 
 
@@ -16,7 +16,14 @@ export default function HomeContent() {
     <Navbar />
       <main className="flex flex-col gap-[32px] row-start-2 items-center">
         <div className="site-intro-header flex items-center justify-center sm:flex-row sm:items-end gap-2 px-16 lg:px-32">
-          <h1 className="text-2xl lg:text-4xl">I'm Mohammed Mowla, a Computer Scientist at the FAA</h1>     
+          <motion.h1 
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 2, duration: 1.8, ease: "easeOut" }}
+            className="text-2xl lg:text-4xl">
+              I'm Mohammed Mowla, a Computer Scientist at the FAA
+          </motion.h1>
+          <h1 className="text-2xl lg:text-4xl"></h1>     
         </div>
         <div className="flex flex-col sm:flex-row gap-8">
           {/* <Card
