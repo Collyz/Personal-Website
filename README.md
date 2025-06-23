@@ -1,0 +1,1 @@
+This is a portfolio website that I created using Svelte,... however as time passes I've realized that I should use more commonly used frameworks. Currently creating the website from the ground up using Next.js and React components. 
