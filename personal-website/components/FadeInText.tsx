@@ -8,7 +8,7 @@ type FadeInTextProp  = {
     additative?: boolean;
 }
 
-export default function FadeInText({ text, className = 'text-2xl lg:text-4xl', additative = false} : FadeInTextProp) {
+export default function FadeInText({ text, className = '', additative = false} : FadeInTextProp) {
 
     if (additative) {
         className = "text-2xl lg:text-4xl" + " " + className
