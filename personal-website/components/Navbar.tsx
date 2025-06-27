@@ -12,7 +12,7 @@ export function Navbar() {
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: .3, duration: 1.3, ease: "easeOut" }}
-      className="flex justify-center items-center p-4 pt-24"
+      className="flex justify-center items-center p-4 pt-[50px]"
     >
       <ul className="flex gap-6 text-lg">
         <li><a href="/" className={linkClass('/')}>Home</a></li>
