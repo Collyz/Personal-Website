@@ -44,7 +44,7 @@ export default function ProjectContent() {
                         title={'Syntax Type Website'} 
                         date={'March 2023 - April 2023'} 
                         description={''} 
-                        href={''} 
+                        href={'https://github.com/Collyz/Syntax-Type'} 
                         show_line={true} 
                         status={true}
                         children={null}
@@ -53,16 +53,16 @@ export default function ProjectContent() {
                         title={'Traveling Salesperson Problem (TSP)'} 
                         date={'April 2023'} 
                         description={''} 
-                        href={''} 
+                        href={'https://github.com/Collyz/TravelingSalesPerson'} 
                         show_line={true} 
                         status={true}
                         children={null}
                         />,
                         <ProjectCard 
-                        title={'Desktop Inventory Application'} 
+                        title={'Beauty In You - Desktop Inventory Application'} 
                         date={'September - December 2022'} 
                         description={''} 
-                        href={''} 
+                        href={'https://github.com/Collyz/Beauty-in-You-Inventory-App'} 
                         show_line={true} 
                         status={true}
                         children={null}
@@ -71,7 +71,7 @@ export default function ProjectContent() {
                         date={'January 2022 - May 2022'} 
                         description={''} 
                         href={''} 
-                        show_line={true} 
+                        show_line={false} 
                         status={true}
                         children={null}
                         />
