@@ -16,7 +16,7 @@ export default function ProjectContent() {
                         <ProjectCard 
                         title={'Finite Automata Designer'} 
                         date={'February 2025 - Present'} 
-                        description={'Recreation of a Theory of Computation final project using the Godot 4.0 engine, featuring enhanced visuals, improved state highlighting, and string acceptance animations. Currently being rebuilt from the ground up in Next.js for improved accessibility. Planned features include saving finite automata and export/print functionality.'} 
+                        description={'Recreation of the \'Theory of Computation\' final project using the Godot 4.0 engine, featuring enhanced visuals, improved state highlighting, and string acceptance animations. Currently being rebuilt from the ground up in Next.js for improved accessibility. Planned features include saving finite automata and export/print functionality.'} 
                         href={'https://github.com/Collyz/FiniteAutomataDesigner'} 
                         show_line={true} 
                         status={false}>
