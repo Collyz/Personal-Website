@@ -1,5 +1,5 @@
 'use client'
-
+import Image from 'next/image'
 import { Navbar } from '@/components/Navbar';
 import FadeInText from '@/components/FadeInText';
 import { ProjectCard } from '@/components/ProjectCard';
@@ -21,7 +21,14 @@ export default function ProjectContent() {
                             href={'https://github.com/Collyz/FiniteAutomataDesigner'} 
                             show_line={true} 
                             status={false}>
-                            <img src="FA_Designer_godot.png" alt="Finite Automata Designer in Godot" className='project-img'/>
+                            <Image src="/FA_Designer_godot.png"
+                                alt="Finite Automata Designer in Godot"
+                                width={800}
+                                height={600}
+                                className="mb-3 rounded-3xl object-cover sm:max-w-1/2 max-w-full"
+                                style={{ height: 'auto' }}
+                                sizes="(min-width: 640px) 50vw, 100vw"
+                                priority />
                         </ProjectCard>,
                         <ProjectCard 
                             key={1}
@@ -45,7 +52,14 @@ export default function ProjectContent() {
                             href={'https://collyz.github.io/Theory_Of_Computation_Final_Project/'} 
                             show_line={true} 
                             status={true}>
-                            <img src="toc_final_proj.png" alt="Theory of Computation Final Project Example Deterministic FA that accepts all strings starting with 1" className='project-img' />
+                            <Image src="/toc_final_proj.png" 
+                            alt="Theory of Computation Final Project Example Deterministic FA that accepts all strings starting with 1" 
+                            width={800}
+                            height={600}
+                            className="mb-3 rounded-3xl object-cover sm:max-w-1/2 max-w-full"
+                            style={{ height: 'auto' }}
+                            sizes="(min-width: 640px) 50vw, 100vw"
+                            priority/>
                         </ProjectCard>,
 
                         <ProjectCard
@@ -56,7 +70,14 @@ export default function ProjectContent() {
                             href={''} 
                             show_line={true} 
                             status={true}>
-                            <img src="2000_epoch_and_imgs_DCGAN_ham_126_mins_imgs.png" alt="Hamster images generated from 2k epochs taking 126 images"  className='project-img' />
+                            <Image src="/2000_epoch_and_imgs_DCGAN_ham_126_mins_imgs.png" 
+                            alt="Hamster images generated from 2k epochs taking 126 images" 
+                            width={800}
+                            height={600}
+                            className="mb-3 rounded-3xl object-cover sm:max-w-1/2 max-w-full"
+                            style={{ height: 'auto' }}
+                            sizes="(min-width: 640px) 50vw, 100vw"
+                            priority/>
                         </ ProjectCard>,
 
                         <ProjectCard 
@@ -67,7 +88,14 @@ export default function ProjectContent() {
                             href={'https://github.com/Collyz/Lake-Fred'} 
                             show_line={true} 
                             status={true}> 
-                        <img src="lake-fred-triangulation.png" alt="2D Delauney Triangulation on Lake Fred Geospatial points" className='project-img' />
+                            <Image src="/lake-fred-triangulation.png" 
+                            alt="2D Delauney Triangulation on Lake Fred Geospatial points"
+                            width={800}
+                            height={600}
+                            className="mb-3 rounded-3xl object-cover sm:max-w-1/2 max-w-full"
+                            style={{ height: 'auto' }}
+                            sizes="(min-width: 640px) 50vw, 100vw"
+                            priority/>
                         </ ProjectCard>,
                         // <ProjectCard 
                         // title={'Java Dynamic Website'} 
@@ -86,7 +114,14 @@ export default function ProjectContent() {
                             href={'https://github.com/Collyz/Syntax-Type'} 
                             show_line={true} 
                             status={true}>
-                            <img src="syntax-type-landing.png" alt="Syntax Type landing page" className='project-img'/>
+                            <Image src="/syntax-type-landing.png" 
+                            alt="Syntax Type landing page"
+                            width={800}
+                            height={600}
+                            className="mb-3 rounded-3xl object-cover sm:max-w-1/2 max-w-full"
+                            style={{ height: 'auto' }}
+                            sizes="(min-width: 640px) 50vw, 100vw"
+                            priority/>
                         </ProjectCard>,
                         <ProjectCard 
                             key={6}
@@ -104,7 +139,14 @@ export default function ProjectContent() {
                             href={'https://github.com/Collyz/Beauty-in-You-Inventory-App'} 
                             show_line={true} 
                             status={true}>
-                            <img src="beauty-in-you-login.png" alt="Beauty In You Desktop Inventory Application login screen" className='project-img'/>
+                            <Image src="/beauty-in-you-login.png" 
+                            alt="Beauty In You Desktop Inventory Application login screen"
+                            width={800}
+                            height={600}
+                            className="mb-3 rounded-3xl object-cover sm:max-w-1/2 max-w-full"
+                            style={{ height: 'auto' }}
+                            sizes="(min-width: 640px) 50vw, 100vw"
+                            priority/>
                         </ProjectCard>,
                         <ProjectCard 
                             key={8}
