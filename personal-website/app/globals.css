@@ -25,3 +25,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.project-img {
+  @apply mb-3 object-cover rounded-3xl sm:max-w-1/2 max-w-full;
+}
