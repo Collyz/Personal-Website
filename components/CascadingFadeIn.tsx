@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'; 
-import { Component, JSX } from "react";
+import { JSX } from "react";
 
 export default function CascadingFadeIn({ components }: { components: JSX.Element[] }) {
   return (

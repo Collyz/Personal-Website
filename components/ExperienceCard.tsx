@@ -1,7 +1,7 @@
 'use client';
 
 import ArrowIcon from '@/components/ArrowIcon';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 type ExperienceProp = {
   title: string;

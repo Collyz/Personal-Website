@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export function Navbar() {
@@ -15,10 +16,10 @@ export function Navbar() {
       className="flex justify-center items-center p-4 pt-[50px]"
     >
       <ul className="flex gap-6 text-lg">
-        <li><a href="/" className={linkClass('/')}>Home</a></li>
-        <li><a href="/experience" className={linkClass('/experience')}>Experience</a></li>
-        <li><a href="/projects" className={linkClass('/projects')}>Projects</a></li>
-        <li><a href="/resume" className={linkClass('/resume')}>Resume</a></li>
+        <li><Link href="/" className={linkClass('/')}>Home</Link></li>
+        <li><Link href="/experience" className={linkClass('/experience')}>Experience</Link></li>
+        <li><Link href="/projects" className={linkClass('/projects')}>Projects</Link></li>
+        <li><Link href="/resume" className={linkClass('/resume')}>Resume</Link></li>
       </ul>
     </motion.nav>
   );

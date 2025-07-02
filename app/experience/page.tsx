@@ -14,6 +14,7 @@ export default function ExperienceContent() {
                 <CascadingFadeIn 
                     components={[
                         <ExperienceCard 
+                            key={0}
                             title='Computer Scientist' 
                             company='LS Technologies' 
                             role='Computer Science Specialist Level 6' 
@@ -29,6 +30,7 @@ export default function ExperienceContent() {
                             href='https://lstechllc.com/'
                         />,
                         <ExperienceCard 
+                            key={1}
                             title='Computer Science Intern' 
                             company='Federal Aviation Administration' 
                             role='A.M.M.S. Testing and Automation' 
@@ -41,7 +43,8 @@ export default function ExperienceContent() {
                             show_line = {true}
                             href='https://www.faa.gov/'
                         />,
-                        <ExperienceCard 
+                        <ExperienceCard
+                            key={2}
                             title='Tutoring Center Student Tutor' 
                             company='Stockton University' 
                             role='Computer Science and Mathematics Tutor' 
@@ -56,6 +59,7 @@ export default function ExperienceContent() {
                             href='https://www.stockton.edu/'
                         />,
                         <ExperienceCard 
+                            key={3}
                             title='Computer Scientist Intern' 
                             company='Federal Aviation Administration'
                             role='A.M.M.S. Testing and Automation' 
