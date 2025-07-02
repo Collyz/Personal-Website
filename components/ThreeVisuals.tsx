@@ -62,7 +62,7 @@ function AnimatedTorus({
 
 export function OrbitTori() {
   const groupRef = useRef<THREE.Group>(null)
-  const count = useRef(120);
+  const count = useRef(30);
   const radiusRef = useRef(12);
   const orbitDirection = useRef(-1);
 
@@ -101,7 +101,7 @@ export function OrbitTori() {
           key={i}
           angleRef={angleRef}
           radiusRef={radiusRef}
-          color={`hsl(${i * 3}, 80%, 60%)`}
+          color={`hsl(${i * 12}, 80%, 60%)`}
           startAngle={(i / angleRefs.length) * Math.PI * 2}
         />
       ))}
