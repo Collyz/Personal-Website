@@ -21,8 +21,8 @@ function AnimatedTorus({
   const materialRef = useRef<THREE.MeshStandardMaterial>(null);
   const startTimeRef = useRef<number | null>(null);
 
-// Updating the torus
-useFrame(( { clock }) => {
+  // Updating the torus
+  useFrame(( { clock }) => {
 
     // Positions the torus in a circular orbit and applies local rotation on all axes
     if (meshRef.current) {
@@ -84,8 +84,6 @@ export function OrbitTori() {
     if (groupRef.current) {
       groupRef.current.rotateZ(0.005);
     }
-
-    groupRef.current
 
 
   });

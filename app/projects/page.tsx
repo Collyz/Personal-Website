@@ -95,8 +95,7 @@ export default function ProjectContent() {
                             description={'Developed as part of CSCI-4463: Artificial Intelligence at Stockton University. Explored solutions to the Traveling Salesperson Problem (TSP) using Java. The most successful implementation, VBSS.java, applies a Value Biased Stochastic Sampling heuristic that favors selecting cities closer to the starting point based on Euclidean distance, effectively producing efficient tour paths for the given TSP instances.'} 
                             href={'https://github.com/Collyz/TravelingSalesPerson'} 
                             show_line={true} 
-                            status={true}
-                            children={null}/>,
+                            status={true}/>,
                         <ProjectCard 
                             key={7}
                             title={'Beauty In You - Desktop Inventory Application'} 
