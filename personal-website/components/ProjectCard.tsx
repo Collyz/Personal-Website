@@ -33,15 +33,15 @@ export function ProjectCard({
   }
   
   if (status) {
-    project_progress = <p className="text-xs py-[2px] px-2 border-2 rounded-full border-green-500  max-h-fit bg-green-900/20">Completed</p>
+    project_progress = <p className="text-xs py-[2px] ml-5 px-2 border-2 rounded-full border-green-500  max-h-fit bg-green-900/20">Completed</p>
   } else {
-    project_progress = <p className="text-xs py-[2px] px-2 border-2 rounded-full border-yellow-400 max-h-fit bg-yellow-600/70">WIP</p>
+    project_progress = <p className="text-xs py-[2px] ml-5 px-2 border-2 rounded-full border-yellow-400 max-h-fit bg-yellow-600/70">WIP</p>
   }
 
   if (href != '') {
     link = <a href={href} className="card" target="_blank" rel="noopener noreferrer">
             <div className="flex justify-between">
-              <h2 className="group/inner text-xl font-bold group-hover/outer:text-blue-400">
+              <h2 className="group/inner text-xl font-bold group-hover/outer:text-blue-400 pb-3">
               {title}
               <ArrowIcon />
             </h2>
@@ -51,7 +51,7 @@ export function ProjectCard({
   } else {
     link = <span>
             <div className="flex justify-between">
-              <h2 className="group/inner text-xl font-bold group-hover/outer:text-blue-400">
+              <h2 className="group/inner text-xl font-bold group-hover/outer:text-blue-400 pb-3">
               {title}
               </h2>
               {project_progress}
@@ -66,8 +66,9 @@ export function ProjectCard({
           {date}
         </p>
         {link}
-        <div >
-          <p className="text-sm lg:text-base">{description}</p>  
+        <div className='flex flex-col sm:flex-row'>
+          {children}
+          <p className="text-sm lg:text-base px-5">{description}</p>  
         </div>
       </div>
       {line}
