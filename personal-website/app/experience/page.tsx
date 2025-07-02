@@ -46,12 +46,12 @@ export default function ExperienceContent() {
                             company='Stockton University' 
                             role='Computer Science and Mathematics Tutor' 
                             date="September 2023 - May 2024" 
-                            description="Provided academic support to Computer Science students in Programming I & II, 
-                            delivering individualized tutoring in Java and Python to reinforce core programming concepts
-                            . Led 1-on-1 sessions across technical subjects including physics-based programming, 
-                            discrete mathematics, and calculus, adapting explanations to align with varied learning 
-                            styles. Employed a range of teaching strategies and problem-solving techniques to promote engagement, 
-                            deepen conceptual understanding, and support long-term academic success." 
+                            description="Provided academic support to Computer Science students in Programming I & II, delivering 
+                            individualized tutoring in Java and Python to reinforce core programming concepts. Led 1-on-1 sessions 
+                            across technical subjects, including physics-based programming, discrete mathematics, and calculus, 
+                            adapting explanations to align with varied learning styles. Employed a range of teaching strategies 
+                            and problem-solving techniques to promote engagement, deepen conceptual understanding, and support 
+                            long-term academic success." 
                             show_line = {true}
                             href='https://www.stockton.edu/'
                         />,
@@ -60,7 +60,10 @@ export default function ExperienceContent() {
                             company='Federal Aviation Administration'
                             role='A.M.M.S. Testing and Automation' 
                             date="June - August 2023" 
-                            description='Led initial implementation of iOS automation for the AMMS project using Appium with Java, establishing a foundation for scalable mobile testing. Documented manual test coverage across web and iOS platforms. Co-led a cohort project, providing technical guidance on configuring and leveraging a virtualized Simulated Driver Radar Recorder (SDRR) environment.' 
+                            description='Led initial implementation of iOS automation for the AMMS project using Appium with Java, 
+                            establishing a foundation for scalable mobile testing. Documented manual test coverage across web 
+                            and iOS platforms. Co-led a cohort project, providing technical guidance on configuring and leveraging 
+                            a virtualized Simulated Driver Radar Recorder (SDRR) environment.' 
                             show_line = {false}
                             href='https://www.faa.gov/'
                         />,
