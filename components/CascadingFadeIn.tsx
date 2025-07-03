@@ -1,5 +1,6 @@
 'use client'
 
+import { time } from 'console';
 import { motion } from 'framer-motion'; 
 import { JSX } from "react";
 
@@ -7,12 +8,13 @@ export default function CascadingFadeIn({ components }: { components: JSX.Elemen
   return (
     <div>
       {components.map((Component, index) => {
-        const timedDelay = index * 0.3 + 1.3;
+        const timedDelay = index * 0.1 + 1.3;
+        console.log(timedDelay)
         return (
           <motion.div key={index}
-            initial={{ y: -20, opacity: 0 }}
+            initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: timedDelay, duration: 1.3, ease: "easeOut" }}
+            transition={{ delay: timedDelay, duration: .8, ease: "easeInOut" }}
             >
             {Component}
           </motion.div>
