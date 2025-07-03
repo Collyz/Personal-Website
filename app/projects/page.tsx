@@ -8,7 +8,6 @@ import CascadingFadeIn from '@/components/CascadingFadeIn';
 export default function ProjectContent() {
     return (
         <div>
-            <Navbar />
             <main className="flex flex-col items-center">
                 <FadeInText text="Projects" className='py-16' additative={true}/>
                 <CascadingFadeIn 

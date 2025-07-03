@@ -7,7 +7,7 @@ export default function CascadingFadeIn({ components }: { components: JSX.Elemen
   return (
     <div>
       {components.map((Component, index) => {
-        const timedDelay = index * 0.3 + 1.6;
+        const timedDelay = index * 0.3 + 1.3;
         return (
           <motion.div key={index}
             initial={{ y: -20, opacity: 0 }}

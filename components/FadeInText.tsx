@@ -15,9 +15,9 @@ export default function FadeInText({ text, className = '', additative = false} :
     }
     return (
         <motion.div 
-            initial={{ y: -100, opacity: 0 }}
+            initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: 1.3, ease: "easeOut" }}
+            transition={{ delay: 1, duration: .8, ease: "easeOut" }}
             className={className}
             >
             
