@@ -46,7 +46,7 @@ function AnimatedTorus({
     if (materialRef.current && elapsedTime > 2) {
       if (materialRef.current) {
         if (materialRef.current.opacity != 1) {
-          materialRef.current.opacity += 0.008
+          materialRef.current.opacity += 0.01
         }
       }
     }

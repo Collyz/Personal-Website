@@ -15,21 +15,6 @@ export default function HomeContent() {
             <h1 className="text-2xl lg:text-4xl"></h1>     
           </div>
           <div className="flex flex-col sm:flex-row gap-8">
-            {/* <Card
-              title="About Me"
-              description="Learn more about my background and interests."
-              href="/about"
-            />
-            <Card
-              title="Projects"
-              description="Explore my projects and contributions."
-              href="/projects"
-            />
-            <Card
-              title="Contact"
-              description="Get in touch with me."
-              href="/contact"
-            /> */}
             <div className="fixed inset-0 w-screen h-screen -z-1">
               <Canvas
                 camera={{ position: [0, 0, 25], fov: 120 }}
@@ -42,7 +27,7 @@ export default function HomeContent() {
               >
                 <ambientLight intensity={1} />
                 <directionalLight position={[5, 5, 5]} intensity={1} />
-                <OrbitControls enableDamping={true} enableRotate={true}/>
+                <OrbitControls enableDamping={true} enableRotate={true} autoRotate autoRotateSpeed={.2} />
                 <OrbitTori />
               </Canvas>
             </div>
