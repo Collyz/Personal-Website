@@ -1,7 +1,6 @@
 'use client'
 
 import CascadingFadeIn from '@/components/CascadingFadeIn';
-import { Navbar } from '@/components/Navbar';
 import FadeInText from '@/components/FadeInText';
 import { ExperienceCard } from '@/components/ExperienceCard';
 

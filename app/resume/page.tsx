@@ -1,6 +1,5 @@
 'use client'
 
-import { Navbar } from '../../components/Navbar';
 import FadeInText from '@/components/FadeInText';
 
 export default function ResumeContent() {

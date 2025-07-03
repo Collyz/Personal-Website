@@ -1,6 +1,5 @@
 'use client'
 import Image from 'next/image'
-import { Navbar } from '@/components/Navbar';
 import FadeInText from '@/components/FadeInText';
 import { ProjectCard } from '@/components/ProjectCard';
 import CascadingFadeIn from '@/components/CascadingFadeIn';
