@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
 
 export function Navbar() {
   const pathname = usePathname();

@@ -39,6 +39,7 @@ export default function HomeContent() {
           <CascadingFadeIn 
             components={[
               <Link
+              key={0}
                 href="https://github.com/Collyz/Personal-Website"
                 target="_blank"
                 rel="noopener noreferrer"
