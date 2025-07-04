@@ -20,7 +20,7 @@ export default function FadeInText({ text, className = '', additative = false} :
             className={className}
             >
             
-            {text}
+            <h2 className='text-center'>{text}</h2>
         </motion.div>
     );
 }
