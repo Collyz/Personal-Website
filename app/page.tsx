@@ -10,7 +10,7 @@ export default function HomeContent() {
     <div>
         <main className="flex flex-col gap-[32px] row-start-2 items-center">
           <div className="site-intro-header flex items-center justify-center sm:flex-row sm:items-end gap-2 px-16 lg:px-32">
-            <FadeInText text="I'm Mohammed Mowla, a Computer Scientist at the FAA" className='pt-24' additative={true}/>
+            <FadeInText text="I'm Mohammed Mowla, a Computer Scientist at LS Technologies" className='pt-24' additative={true}/>
             
             <h1 className="text-2xl lg:text-4xl"></h1>     
           </div>
