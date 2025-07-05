@@ -1,27 +1,25 @@
 'use client'
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export function Navbar() {
   const pathname = usePathname();
-  // Arrow func with conditional to check input string to add underline styling based on what page is routed
-  const linkClass = (path: string) => `hover:underline ${pathname === path ? 'underline decoration-2 underline-offset-4' : ''}`;
-  
-  return (
-    <motion.nav
-      initial={{ y: -70, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: .3, duration: .5, ease: "easeOut" }}
-      className="flex justify-center items-center p-4 pt-[50px]"
-    >
-      <ul className="flex gap-4 md:gap-6 lg:gap-8 text-lg">
-        <li><Link href="/" className={linkClass('/')}>Home</Link></li>
-        <li><Link href="/experience" className={linkClass('/experience')}>Experience</Link></li>
-        <li><Link href="/projects" className={linkClass('/projects')}>Projects</Link></li>
-        <li><Link href="/resume" className={linkClass('/resume')}>Resume</Link></li>
-        {/* <li>
-          <Link
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const linkClass = (path: string) =>
+    `hover:underline ${pathname === path ? 'underline decoration-2 underline-offset-4' : ''}`;
+
+  const navLinks = (
+    <>
+      <li><Link href="/" className={linkClass('/')} onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+      <li><Link href="/experience" className={linkClass('/experience')} onClick={() => setIsMenuOpen(false)}>Experience</Link></li>
+      <li><Link href="/projects" className={linkClass('/projects')} onClick={() => setIsMenuOpen(false)}>Projects</Link></li>
+      <li><Link href="/resume" className={linkClass('/resume')} onClick={() => setIsMenuOpen(false)}>Resume</Link></li>
+      <li>
+        <Link
+          key={0}
             href="https://github.com/Collyz/Personal-Website"
             target="_blank"
             rel="noopener noreferrer"
@@ -38,9 +36,55 @@ export function Navbar() {
             </svg>
             Source
           </Link>
-        </li> */}
+      </li>
+    </>
+  );
 
-      </ul>
-    </motion.nav>
+  return (
+    <nav className="relative flex flex-col items-center">
+      {/* Top nav bar */}
+      <motion.div
+        initial={{ y: -70, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5, ease: 'easeOut' }}
+        className="w-full flex justify-center items-center p-4 pt-[50px] max-w-6xl"
+      >
+        
+
+        {/* Desktop nav links */}
+        <ul className="hidden md:flex gap-6 text-lg">{navLinks}</ul>
+
+        {/* Hamburger icon (mobile only) */}
+        <button
+          className="absolute left-6 md:hidden p-2 justify-start"
+          aria-label="Toggle menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </motion.div>
+
+      {/* Mobile dropdown menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden flex flex-col gap-4 text-lg overflow-hidden w-full px-4 pb-4"
+          >
+            {navLinks}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 }
