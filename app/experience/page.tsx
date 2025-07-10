@@ -3,7 +3,6 @@
 import CascadingFadeIn from '@/components/CascadingFadeIn';
 import FadeInText from '@/components/FadeInText';
 import { ExperienceCard } from '@/components/ExperienceCard';
-import SkillBubble from '@/components/SkillBubble';
 
 export default function ExperienceContent() {
     return (

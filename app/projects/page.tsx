@@ -20,7 +20,7 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={false}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'Next.js', 'HTML Canvas', 'Tailwind', 'Google Auth', 'Godot 4', 'GDScript', 'Theory of Computation'
                                 ]
                             }>
                             <Image src="/FA_Designer_godot.png"
@@ -41,7 +41,7 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={false}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'Swift', 'SwiftUI', 'GameKit', 'iOS', 'AWS DynamoDB', 'Game Dev'
                                 ]
                             }>
                             <div className='flex items-center m-2 mb-2'>
@@ -60,7 +60,7 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={true}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'JavaScript', 'Bootstrap', 'Theory of Computation', 'Vite', 'p5.js'
                                 ]
                             }>
                             <Image src="/toc_final_proj.png" 
@@ -82,7 +82,7 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={true}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'Python', 'PyTorch', 'Computer Vision', 'DCGAN', 'Image Generation', 'Convolutional Neural Network'
                                 ]
                             }>
                             <Image src="/2000_epoch_and_imgs_DCGAN_ham_126_mins_imgs.png" 
@@ -104,7 +104,7 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={true}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'Python', 'Blender', 'Calculus 3', '3D Printing', 'Research'
                                 ]
                             }> 
                             <Image src="/lake-fred-triangulation.png" 
@@ -134,7 +134,7 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={true}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'PHP', 'JavaScript', 'MySQL', 'Bootstrap', 'WAMP'
                                 ]
                             }>
                             <Image src="/syntax-type-landing.png" 
@@ -155,7 +155,7 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={true}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'Java', 'TSP Problem', 'Stochastic Optimization', 'Artificial Intelligence'
                                 ]
                             }/>,
                         <ProjectCard 
@@ -167,10 +167,10 @@ export default function ProjectContent() {
                             show_line={true} 
                             status={true}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'Java', 'JavaFX', 'MySQL', 'SceneBuilder', 'MVC'
                                 ]
                             }>
-                            <Image src="/beauty-in-you-login.png" 
+                            <Image src="/beauty-in-you-login.png"
                             alt="Beauty In You Desktop Inventory Application login screen"
                             width={800}
                             height={600}
@@ -188,7 +188,7 @@ export default function ProjectContent() {
                             show_line={false} 
                             status={true}
                             skills={[
-                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation'
+                                'Java', 'Statistics'
                                 ]
                             }>
                         </ProjectCard>
