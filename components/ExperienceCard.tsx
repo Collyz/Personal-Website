@@ -37,9 +37,9 @@ export function ExperienceCard (props: ExperienceProp) {
         <div >
           <p className="text-sm lg:text-base my-1">{props.description}</p>  
         </div>
-        <div className='flex gap-2 pt-2'>
-          {props.skills?.map((item: string) => (
-          <SkillBubble skill={item} />
+        <div className='flex gap-2 flex-wrap pt-2'>
+          {props.skills?.map((item: string, index:number) => (
+          <SkillBubble key={index} skill={item} />
         ))}
         </div>
       </div>
