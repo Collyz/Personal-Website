@@ -3,6 +3,7 @@
 import CascadingFadeIn from '@/components/CascadingFadeIn';
 import FadeInText from '@/components/FadeInText';
 import { ExperienceCard } from '@/components/ExperienceCard';
+import SkillBubble from '@/components/SkillBubble';
 
 export default function ExperienceContent() {
     return (
@@ -26,6 +27,10 @@ export default function ExperienceContent() {
                             Refactored test infrastructure to achieve a 92.5% runtime reduction for regression tests." 
                             show_line = {true}
                             href='https://lstechllc.com/'
+                            skills={[
+                                'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation', 'Manual Testing'
+                                ]
+                            }
                         />,
                         <ExperienceCard 
                             key={1}
@@ -40,6 +45,10 @@ export default function ExperienceContent() {
                             the Air Traffic Safety Management Team, leveraging Confluence with integrated Jira workflows." 
                             show_line = {true}
                             href='https://www.faa.gov/'
+                            skills={[
+                                'Python', 'Selenium', 'Appium', "HTML/CSS"
+                                ]
+                            }
                         />,
                         <ExperienceCard
                             key={2}
@@ -55,6 +64,10 @@ export default function ExperienceContent() {
                             long-term academic success." 
                             show_line = {true}
                             href='https://www.stockton.edu/'
+                            skills={[
+                                'Java','Python', 'Calculus 1', 'Discrete Math', 'Data Structures and Algorithms', 'Physics Simulations'
+                                ]
+                            }
                         />,
                         <ExperienceCard 
                             key={3}
@@ -68,11 +81,15 @@ export default function ExperienceContent() {
                             a virtualized Simulated Driver Radar Recorder (SDRR) environment.' 
                             show_line = {false}
                             href='https://www.faa.gov/'
+                            skills={[
+                                'Java', 'Appium', 'iOS', 'Ubuntu', 'MobaXTerm'
+                                ]
+                            }
                         />,
                     ]}
                 />
-               
             </main>
+            
             <footer className='py-12'></footer>
         </div>
     );
