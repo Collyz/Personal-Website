@@ -3,7 +3,6 @@
 import ArrowIcon from './ArrowIcon';
 import React, { ReactNode } from 'react';
 import SkillBubble from './SkillBubble';
-import { div, p } from 'motion/react-client';
 
 type ProjectCardProp = {
   title: string;
