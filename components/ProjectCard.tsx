@@ -3,6 +3,7 @@
 import ArrowIcon from './ArrowIcon';
 import React, { ReactNode } from 'react';
 import SkillBubble from './SkillBubble';
+import { div, p } from 'motion/react-client';
 
 type ProjectCardProp = {
   title: string;
@@ -25,6 +26,8 @@ export function ProjectCard(props  : ProjectCardProp ) {
   
   if (props.show_line) {
     line = <hr className='h-[1] my-5' />;
+  } else {
+    line = <p className='my-5'/>
   }
   
   if (props.status) {

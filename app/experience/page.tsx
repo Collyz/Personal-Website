@@ -24,7 +24,7 @@ export default function ExperienceContent() {
                             and iOS platforms. Leveraged Python with Selenium and Appium to build a reusable 
                             and maintainable regression suite, enabling continuous validation of new features. 
                             Refactored test infrastructure to achieve a 92.5% runtime reduction for regression tests." 
-                            show_line = {true}
+                            show_line = {false}
                             href='https://lstechllc.com/'
                             skills={[
                                 'Python', 'Selenium', 'Appium', 'iOS', 'Black-Box Testing', 'Automation', 'Manual Testing'
@@ -42,7 +42,7 @@ export default function ExperienceContent() {
                             Improved test execution efficiency by optimizing iOS simulator configurations. 
                             Additionally, led a team of 11 interns in building the AJI-3320 organizational Wiki for 
                             the Air Traffic Safety Management Team, leveraging Confluence with integrated Jira workflows." 
-                            show_line = {true}
+                            show_line = {false}
                             href='https://www.faa.gov/'
                             skills={[
                                 'Python', 'Selenium', 'Appium', "HTML/CSS"
@@ -61,7 +61,7 @@ export default function ExperienceContent() {
                             adapting explanations to align with varied learning styles. Employed a range of teaching strategies 
                             and problem-solving techniques to promote engagement, deepen conceptual understanding, and support 
                             long-term academic success." 
-                            show_line = {true}
+                            show_line = {false}
                             href='https://www.stockton.edu/'
                             skills={[
                                 'Java','Python', 'Calculus 1', 'Discrete Math', 'Data Structures and Algorithms', 'Physics Simulations'

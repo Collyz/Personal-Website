@@ -20,6 +20,8 @@ export function ExperienceCard (props: ExperienceProp) {
   let line = null;
   if (props.show_line) {
     line = <hr className='h-[1] my-5' />;
+  } else {
+    line = <p className='my-5'/>
   }
   return (
     <div className='px-12 md:px-24 lg:px-36 max-w-[1500px]'>
