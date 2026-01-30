@@ -1,34 +1,37 @@
 'use client';
 
 import React, { useMemo } from 'react';
+import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 type MobiusStripProps = {
-  size?: number;
-  segmentsU?: number;
-  segmentsV?: number;
+  size?: number;      // Overall scale (default 10)
+  segmentsU?: number; // Resolution around strip
+  segmentsV?: number; // Width resolution
 };
 
 export default function MobiusStrip({
-  size = 20,
+  size = 10,
   segmentsU = 200,
-  segmentsV = 40,
+  segmentsV = 30,
 }: MobiusStripProps) {
-  const geometry = useMemo(() => {
+  const points = useMemo(() => {
     const positions: number[] = [];
-    const indices: number[] = [];
 
-    const R = 1;
+    const R = 1.2; // Base radius
 
-    // Generate vertices
-    for (let i = 0; i <= segmentsU; i++) {
-      const u = (i / segmentsU) * Math.PI * 2;
+    for (let i = 0; i < segmentsU; i++) {
+      const u = (i / segmentsU) * 2 * Math.PI; // 0 → 2π
+
       for (let j = 0; j <= segmentsV; j++) {
-        const v = (j / segmentsV) * 2 - 1;
+        const v = (j / segmentsV) * 2 - 1; // -1 → 1 
+
+        // Parametric equations
         const x = (R + (v / 2) * Math.cos(u / 2)) * Math.cos(u);
         const y = (R + (v / 2) * Math.cos(u / 2)) * Math.sin(u);
         const z = (v / 2) * Math.sin(u / 2);
 
+        // Scale
         positions.push(
           x * size,
           y * size,
@@ -37,44 +40,18 @@ export default function MobiusStrip({
       }
     }
 
-    // Generate faces (indices)
-    const vertsPerRow = segmentsV + 1;
-
-    for (let i = 0; i < segmentsU; i++) {
-      for (let j = 0; j < segmentsV; j++) {
-        const a = i * vertsPerRow + j;
-        const b = (i + 1) * vertsPerRow + j;
-        const c = (i + 1) * vertsPerRow + (j + 1);
-        const d = i * vertsPerRow + (j + 1);
-
-        // Two triangles per quad
-        indices.push(a, b, d);
-        indices.push(b, c, d);
-      }
-    }
-
-    const geometry = new THREE.BufferGeometry();
-
-    geometry.setAttribute(
-      'position',
-      new THREE.Float32BufferAttribute(positions, 3)
-    );
-
-    geometry.setIndex(indices);
-
-    geometry.computeVertexNormals();
-
-    return geometry;
+    return new Float32Array(positions);
   }, [size, segmentsU, segmentsV]);
 
   return (
-    <mesh geometry={geometry}>
-      <meshStandardMaterial
-        color="#db603a"
-        side={THREE.DoubleSide} // Change to make one sided or double sided
-        roughness={0.3}
-        metalness={0.2}
+    <Points positions={points} stride={3}>
+      <PointMaterial
+        transparent
+        color="#00ffff"
+        size={0.08}
+        sizeAttenuation
+        depthWrite={false}
       />
-    </mesh>
+    </Points>
   );
 }

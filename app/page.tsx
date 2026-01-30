@@ -5,8 +5,8 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { OrbitTori } from '../components/ThreeVisuals';
 import FadeInText from '../components/FadeInText';
-import MobiusStrip from '@/components/Mobius';
-
+import MobiusStrip from '@/components/MobiusStrip';
+import { CameraHelper } from 'three';
 
 export default function HomeContent() {
   return (
@@ -19,13 +19,14 @@ export default function HomeContent() {
           <div className="flex flex-col sm:flex-row gap-8">
             <div className="fixed inset-0 w-screen h-screen -z-1">
               <Canvas
-                camera={{ position: [0, 0, 40], fov: 120 }}
+                camera={{ position: [0, 0, 20], fov: 120 }}
                 style={{
                   backgroundColor: 'transparent',
                 }}
                 onCreated={({ camera }) => {
                   camera.lookAt(0, 0, 0);
                 }}
+                
               >
                 <ambientLight intensity={1} />
                 <directionalLight position={[5, 5, 5]} intensity={1} />
