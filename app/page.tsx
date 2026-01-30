@@ -5,6 +5,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { OrbitTori } from '../components/ThreeVisuals';
 import FadeInText from '../components/FadeInText';
+import MobiusStrip from '@/components/Mobius';
 
 
 export default function HomeContent() {
@@ -28,8 +29,15 @@ export default function HomeContent() {
               >
                 <ambientLight intensity={1} />
                 <directionalLight position={[5, 5, 5]} intensity={1} />
-                <OrbitControls enableDamping={true} enableRotate={true} />
+                <OrbitControls
+                  enableDamping
+                  dampingFactor={0.04}
+                  rotateSpeed={0.6} 
+                  zoomSpeed={0.8}
+                  panSpeed={0.5}
+                />
                 {/* <OrbitTori /> */}
+                <MobiusStrip />
               </Canvas>
             </div>
 
