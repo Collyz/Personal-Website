@@ -29,7 +29,7 @@ export default function HomeContent() {
                 <ambientLight intensity={1} />
                 <directionalLight position={[5, 5, 5]} intensity={1} />
                 <OrbitControls enableDamping={true} enableRotate={true} />
-                <OrbitTori />
+                {/* <OrbitTori /> */}
               </Canvas>
             </div>
 
