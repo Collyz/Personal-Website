@@ -47,10 +47,12 @@ export default function Duck({
         }
         // Eyes
         else {
+          child.geometry.computeVertexNormals();
+          child.geometry.normalizeNormals();
           child.material = new THREE.MeshStandardMaterial({
             color: '#000000', // Black
             side: THREE.DoubleSide,
-            roughness: 0.4,
+            roughness: 0.2,
             metalness: 0.5,
           });
         }

@@ -75,9 +75,10 @@ export default function HomeContent() {
               }}
             >
               <ambientLight intensity={1} />
+              <axesHelper args={[10]} />
 
               <directionalLight
-                position={[5, 5, 5]}
+                position={[5, 15, 0]}
                 intensity={1}
               />
               <Duck
