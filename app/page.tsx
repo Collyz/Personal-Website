@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
+import Duck from '@/components/Duck';
 import { OrbitTori } from '../components/ThreeVisuals';
 import FadeInText from '../components/FadeInText';
 import MobiusStrip from '@/components/MobiusStrip';
@@ -79,6 +80,12 @@ export default function HomeContent() {
                 position={[5, 5, 5]}
                 intensity={1}
               />
+              <Duck
+                scale={1.2}
+                position={[0, 0, 0]}
+                rotation={[0, 0, 0]}
+              />
+
 
               <OrbitControls
                 enableDamping
