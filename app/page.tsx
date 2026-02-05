@@ -1,9 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-
 import FadeInText from '../components/FadeInText';
-import Script from 'next/script';
-
 import ThreeScene from '@/components/MobiusStrip';
 
 export default function HomeContent() {
