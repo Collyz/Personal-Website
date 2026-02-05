@@ -17,19 +17,14 @@ export default function Duck({
   rotation = [0, 0, 0],
 }: DuckProps) {
 
-  /* ============================
-     Load OBJ
-  ============================ */
-
+  // Load object
   const duck = useLoader(
     OBJLoader,
     '/models/Rubber_Derpy.obj'
   );
 
-  /* ============================
-     Apply Materials
-  ============================ */
 
+  // Apply Materials
   useEffect(() => {
 
     duck.traverse((child) => {
@@ -63,10 +58,7 @@ export default function Duck({
     });
   }, [duck]);
 
-  /* ============================
-     Render
-  ============================ */
-
+  // Render
   return (
     <primitive
       object={duck}

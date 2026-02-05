@@ -1,13 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import Duck from '@/components/Duck';
-import { OrbitTori } from '../components/ThreeVisuals';
 import FadeInText from '../components/FadeInText';
-import MobiusStrip from '@/components/MobiusStrip';
-import { CameraHelper } from 'three';
+import Script from 'next/script';
+
+import ThreeScene from '@/components/MobiusStrip';
 
 export default function HomeContent() {
 
@@ -67,37 +64,11 @@ export default function HomeContent() {
             )}
 
             {/* Canvas */}
-            <Canvas
-              camera={{ position: [0, 0, 20], fov: 120 }}
-              style={{ backgroundColor: 'transparent' }}
-              onCreated={({ camera }) => {
-                camera.lookAt(0, 0, 0);
-              }}
-            >
-              <ambientLight intensity={1} />
-              <axesHelper args={[10]} />
-
-              <directionalLight
-                position={[5, 15, 0]}
-                intensity={1}
-              />
-              <Duck
-                scale={1.2}
-                position={[0, 0, 0]}
-                rotation={[0, 0, 0]}
-              />
-
-
-              <OrbitControls
-                enableDamping
-                dampingFactor={0.04}
-                rotateSpeed={0.6}
-                zoomSpeed={0.8}
-                panSpeed={0.5}
-              />
-
-              <MobiusStrip />
-            </Canvas>
+            {/* <canvas
+              id="three-canvas"
+              className="fixed inset-0 w-screen h-screen -z-10 block"
+            /> */}
+            <ThreeScene />
 
           </div>
 
