@@ -13,12 +13,13 @@ const ThreeScene: React.FC = () => {
       scene.background = null;
       // Camera
       const camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 1, 2000);
-      camera.position.set(0, 3, 12);
+      camera.position.set(0, 0, 12);
       camera.lookAt(0, 0, 0);
       // Renderer
       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
+      // renderer.setClearColor(0x000000, 0); // transparent background
       containerRef.current?.appendChild(renderer.domElement);
       // renderer.setClearColor(0x000000, 0);
       // Ambient light (base visibility)
@@ -33,11 +34,23 @@ const ThreeScene: React.FC = () => {
       controls.enableDamping = true;
       // Clock
       const clock = new THREE.Clock();
+      
+      // Fade in plane
+      const fadeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x163832,
+        transparent: true,
+        opacity: 1, // start fully opaque
+      });
 
-      // // Render the scene and camera
-      // renderer.render(scene, camera);
-      
-      
+      const fadePlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(30, 30),
+        fadeMaterial
+      );
+      fadePlane.position.set(0, 0, 5); // in front of the camera
+      scene.add(fadePlane);
+
+
+      // Loading the duck
       let duck: THREE.Group | null = null;
       // For duck animations
       let pathIndex = 0;
@@ -53,8 +66,6 @@ const ThreeScene: React.FC = () => {
                 color: 0xf5c542,
                 roughness: 0.4,
                 metalness: 0.2,
-                // transparent: true,
-                // opacity: 0.01
               });
             } else {
               // Correct the surface normals on the eyes
@@ -75,8 +86,7 @@ const ThreeScene: React.FC = () => {
         // Compute bounding height so the bottom of the duck can touch the mobius surface correctly
         const duckBox = new THREE.Box3().setFromObject(duck);
         const duckSize = new THREE.Vector3(); duckBox.getSize(duckSize);
-        duckBoundingHeight = duckSize.y;
-        // duck.position.y -= 5;
+        duckBoundingHeight = duckSize.y;;
         scene.add(duck);
       }); 
 
@@ -122,7 +132,84 @@ const ThreeScene: React.FC = () => {
       mobiusGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const mobiusMat = new THREE.PointsMaterial({size: 0.08,vertexColors: true});
       const mobiusPoints = new THREE.Points(mobiusGeo, mobiusMat);
-      scene.add(mobiusPoints);
+      // scene.add(mobiusPoints);
+
+      const vertices: THREE.Vector3[][] = []; // 2D grid [u][v]
+      for (let i = 0; i < segmentsU; i++) {
+        const row: THREE.Vector3[] = [];
+        const u = (i / segmentsU) * 2 * Math.PI;
+
+        for (let j = 0; j <= segmentsV; j++) {
+          const v = (j / segmentsV) * 2 - 1;
+          const x = (R + (v / 2) * Math.cos(u / 2)) * Math.cos(u);
+          const y = (R + (v / 2) * Math.cos(u / 2)) * Math.sin(u);
+          const z = (v / 2) * Math.sin(u / 2);
+
+          const px = x * size;
+          const py = y * size - 4;
+          const pz = z * size;
+
+          const p = new THREE.Vector3(px, py, pz);
+          row.push(p);
+        }
+
+        vertices.push(row);
+      }
+
+      const surfaceGeo = new THREE.BufferGeometry();
+      const surfacePositions: number[] = [];
+      const surfaceNormal: number[] = [];
+      const surfaceColors: number[] = [];
+
+      for (let i = 0; i < segmentsU; i++) {
+        for (let j = 0; j < segmentsV; j++) {
+          const p00 = vertices[i][j];
+          const p01 = vertices[i][j + 1];
+          const p10 = vertices[(i + 1) % segmentsU][j];       // wrap around
+          const p11 = vertices[(i + 1) % segmentsU][j + 1];
+
+          // Triangle 1
+          surfacePositions.push(p00.x, p00.y, p00.z);
+          surfacePositions.push(p10.x, p10.y, p10.z);
+          surfacePositions.push(p11.x, p11.y, p11.z);
+
+          // Triangle 2
+          surfacePositions.push(p00.x, p00.y, p00.z);
+          surfacePositions.push(p11.x, p11.y, p11.z);
+          surfacePositions.push(p01.x, p01.y, p01.z);
+
+          // Normals (approximate)
+          const n1 = new THREE.Vector3().subVectors(p10, p00).cross(new THREE.Vector3().subVectors(p11, p00)).normalize();
+          const n2 = new THREE.Vector3().subVectors(p11, p00).cross(new THREE.Vector3().subVectors(p01, p00)).normalize();
+
+          for (let k = 0; k < 3; k++) {
+            surfaceNormal.push(n1.x, n1.y, n1.z);
+            surfaceNormal.push(n2.x, n2.y, n2.z);
+          }
+
+          // Optional color
+          for (let k = 0; k < 6; k++) {
+            surfaceColors.push(237 / 255, 52 / 255, 105 / 255); // pink
+          }
+        }
+      }
+
+      surfaceGeo.setAttribute('position', new THREE.Float32BufferAttribute(surfacePositions, 3));
+      surfaceGeo.setAttribute('normal', new THREE.Float32BufferAttribute(surfaceNormal, 3));
+      surfaceGeo.setAttribute('color', new THREE.Float32BufferAttribute(surfaceColors, 3));
+
+      const surfaceMat = new THREE.MeshStandardMaterial({
+        vertexColors: true,
+        side: THREE.DoubleSide,
+        roughness: 0.5,
+        metalness: 0.2,
+        transparent: true,
+        opacity: 0.5
+      });
+      const mobiusMesh = new THREE.Mesh(surfaceGeo, surfaceMat);
+      scene.add(mobiusMesh);
+
+
 
       // DEBUG: Visual TNB Frame Helpers (for orientation debugging)
       const tangentHelper = new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(), 2, 0xff0000); // Red = Forward (T)
@@ -295,7 +382,15 @@ const ThreeScene: React.FC = () => {
       };
 
       // Scene rendering function that moves the duck
+      const fadeSpeed = 0.005;
+      let delay = 200;
       const renderScene = () => {
+        if (fadeMaterial.opacity > 0 && delay < 0) {
+          fadeMaterial.opacity -= fadeSpeed;
+          fadeMaterial.opacity = Math.max(fadeMaterial.opacity, 0);
+        } else {
+          delay -= 1;
+        }
         if (duck && doubledCenterPositions.length > 1) {
           const delta = clock.getDelta();
           pathIndex += speed * delta;
@@ -381,231 +476,3 @@ const ThreeScene: React.FC = () => {
   return <div ref={containerRef} />;
 };
 export default ThreeScene;
-
-
-
-
-// #############################################################################
-
-
-// 'use client';
-
-// import React, { useMemo } from 'react';
-// import { Points, PointMaterial } from '@react-three/drei';
-
-// type MobiusStripProps = {
-//   size?: number;
-//   segmentsU?: number;
-//   segmentsV?: number;
-// };
-
-// export default function MobiusStrip({
-//   size = 10,
-//   segmentsU = 200,
-//   segmentsV = 30,
-// }: MobiusStripProps) {
-
-//   const { positions, colors, arrows, frames } = useMemo(() => {
-
-//     const positions: number[] = [];
-//     const colors: number[] = [];
-
-//     const centerPoints: THREE.Vector3[] = [];
-
-//     const tangents: THREE.Vector3[] = [];
-//     const normals: THREE.Vector3[] = [];
-//     const binormals: THREE.Vector3[] = [];
-
-//     const arrows: THREE.ArrowHelper[] = [];
-
-//     const R = 1.2;
-//     const centerJ = Math.floor(segmentsV / 2);
-
-
-//     /* ===============================
-//        Generate Points
-//     =============================== */
-
-//     for (let i = 0; i < segmentsU; i++) {
-
-//       const u = (i / segmentsU) * 2 * Math.PI;
-
-//       for (let j = 0; j <= segmentsV; j++) {
-
-//         const v = (j / segmentsV) * 2 - 1;
-
-//         const x = (R + (v / 2) * Math.cos(u / 2)) * Math.cos(u);
-//         const y = (R + (v / 2) * Math.cos(u / 2)) * Math.sin(u);
-//         const z = (v / 2) * Math.sin(u / 2);
-
-//         const px = x * size;
-//         const py = y * size - 1;
-//         const pz = z * size;
-
-//         const isCenter = j === centerJ;
-
-
-//         // Save centerline
-//         if (isCenter) {
-//           centerPoints.push(new THREE.Vector3(px, py, pz));
-//         }
-
-
-//         // Positions
-//         positions.push(px, py, pz);
-
-
-//         // Colors
-//         if (isCenter) {
-//           colors.push(1, 1, 1); // white
-//         } else {
-//           colors.push(10, 209, 57); // cyan
-//         }
-//       }
-//     }
-
-
-//     /* ===============================
-//        Compute Tangents (T)
-//     =============================== */
-
-//     for (let i = 0; i < centerPoints.length; i++) {
-
-//       const prev =
-//         centerPoints[(i - 1 + centerPoints.length) % centerPoints.length];
-
-//       const next =
-//         centerPoints[(i + 1) % centerPoints.length];
-
-//       const tangent = new THREE.Vector3()
-//         .subVectors(next, prev)
-//         .normalize();
-
-//       tangents.push(tangent);
-//     }
-
-
-//     /* ===============================
-//        Compute Normals & Binormals
-//     =============================== */
-
-//     for (let i = 0; i < centerPoints.length; i++) {
-
-//       const u = (i / segmentsU) * 2 * Math.PI;
-
-//       // Small offset in V direction
-//       const v = 1 / segmentsV;
-
-//       const x2 = (R + (v / 2) * Math.cos(u / 2)) * Math.cos(u);
-//       const y2 = (R + (v / 2) * Math.cos(u / 2)) * Math.sin(u);
-//       const z2 = (v / 2) * Math.sin(u / 2);
-
-//       const sidePoint = new THREE.Vector3(
-//         x2 * size,
-//         y2 * size - 1,
-//         z2 * size
-//       );
-
-
-//       // V direction
-//       const tangentV = new THREE.Vector3()
-//         .subVectors(sidePoint, centerPoints[i])
-//         .normalize();
-
-
-//       // Normal = T × V
-//       const normal = new THREE.Vector3()
-//         .crossVectors(tangents[i], tangentV)
-//         .normalize();
-
-//       normals.push(normal);
-
-
-//       // Binormal = T × N
-//       const binormal = new THREE.Vector3()
-//         .crossVectors(tangents[i], normal)
-//         .normalize();
-
-//       binormals.push(binormal);
-//     }
-
-
-//     /* ===============================
-//        Build ArrowHelpers (TNB)
-//     =============================== */
-
-//     for (let i = 0; i < centerPoints.length; i += 6) {
-
-//       const p = centerPoints[i];
-
-//       // Tangent (Red)
-//       arrows.push(
-//         new THREE.ArrowHelper(
-//           tangents[i],
-//           p,
-//           0.8,
-//           0xff0000
-//         )
-//       );
-
-//       // Normal (Green)
-//       arrows.push(
-//         new THREE.ArrowHelper(
-//           normals[i],
-//           p,
-//           0.8,
-//           0x00ff00
-//         )
-//       );
-
-//       // Binormal (Blue)
-//       arrows.push(
-//         new THREE.ArrowHelper(
-//           binormals[i],
-//           p,
-//           0.8,
-//           0x0000ff
-//         )
-//       );
-//     }
-
-
-//     return {
-//       positions: new Float32Array(positions),
-//       colors: new Float32Array(colors),
-//       arrows,
-//       frames: {
-//         points: centerPoints,
-//         tangents,
-//         normals,
-//         binormals,
-//       }
-//     }; 
-    
-//   }, [size, segmentsU, segmentsV]);
-
-
-//   /* ===============================
-//      Render
-//   =============================== */
-
-//   return (
-//     <>
-//       {/* Point Cloud */}
-//       <Points positions={positions} colors={colors} stride={3}>
-//         <PointMaterial
-//           transparent
-//           vertexColors
-//           size={0.08}
-//           sizeAttenuation
-//           depthWrite={false}
-//         />
-//       </Points>
-
-//       {/* Frenet Frame Arrows */}
-//       {arrows.map((arrow, i) => (
-//         <primitive key={i} object={arrow} />
-//       ))}
-//     </>
-//   );
-// }
