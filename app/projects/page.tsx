@@ -45,9 +45,9 @@ export default function ProjectContent() {
                                 ]
                             }>
                             <div className='flex items-center m-2 mb-2'>
-                                <img src="gnomy_leaderboard.png" alt="Gnomy leaderboard screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
+                                <img src="images/gnomy_leaderboard.png" alt="Gnomy leaderboard screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
                                 <span className='px-2'></ span>
-                                <img src="gnomy_gameplay.png" alt="Gnomy gameplay screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
+                                <img src="images/gnomy_gameplay.png" alt="Gnomy gameplay screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
                             </div>
                         </ProjectCard>,
 
