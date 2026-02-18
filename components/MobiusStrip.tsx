@@ -162,11 +162,20 @@ const ThreeScene: React.FC = () => {
       const surfaceColors: number[] = [];
 
       for (let i = 0; i < segmentsU; i++) {
+        const nextI = (i + 1) % segmentsU;
+        const isSeam = nextI === 0; // crossing the 2π → 0 seam (where twist must flip)
+
         for (let j = 0; j < segmentsV; j++) {
           const p00 = vertices[i][j];
           const p01 = vertices[i][j + 1];
-          const p10 = vertices[(i + 1) % segmentsU][j];       // wrap around
-          const p11 = vertices[(i + 1) % segmentsU][j + 1];
+
+          // Critical: flip V index at seam to account for Möbius half-twist
+          const jj = isSeam ? (segmentsV - j) : j;
+          const jj1 = isSeam ? (segmentsV - (j + 1)) : (j + 1);
+
+          const p10 = vertices[nextI][jj];
+          const p11 = vertices[nextI][jj1];
+
 
           // Triangle 1
           surfacePositions.push(p00.x, p00.y, p00.z);
@@ -204,7 +213,7 @@ const ThreeScene: React.FC = () => {
         roughness: 0.5,
         metalness: 0.2,
         transparent: true,
-        opacity: 0.5
+        opacity: 0.8
       });
       const mobiusMesh = new THREE.Mesh(surfaceGeo, surfaceMat);
       scene.add(mobiusMesh);
@@ -383,7 +392,7 @@ const ThreeScene: React.FC = () => {
 
       // Scene rendering function that moves the duck
       const fadeSpeed = 0.005;
-      let delay = 200;
+      let delay = 100;
       const renderScene = () => {
         if (fadeMaterial.opacity > 0 && delay < 0) {
           fadeMaterial.opacity -= fadeSpeed;
