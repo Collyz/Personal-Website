@@ -6,6 +6,8 @@ import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
 const ThreeScene: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const hintRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // Scene
@@ -13,7 +15,7 @@ const ThreeScene: React.FC = () => {
       scene.background = null;
       // Camera
       const camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 1, 2000);
-      camera.position.set(0, 0, 12);
+      camera.position.set(0, 0, 16);
       camera.lookAt(0, 0, 0);
       // Renderer
       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -35,19 +37,65 @@ const ThreeScene: React.FC = () => {
       // Clock
       const clock = new THREE.Clock();
       
-      // Fade in plane
-      const fadeMaterial = new THREE.MeshBasicMaterial({
-        color: 0x163832,
-        transparent: true,
-        opacity: 1, // start fully opaque
-      });
+      // CSS overlay fade — replaces the old 3D plane approach.
+      // The 3D plane was vulnerable to orbital controls revealing the strip
+      // from the sides, and caused near-clip artifacts when the camera rotated
+      // close to it. A fixed CSS div always covers the full viewport regardless
+      // of camera orientation.
+      const fadeDelayMs = 1500;   // ~100 frames @ 60 fps — same as before
+      const fadeDurationMs = 3000; // ~200 frames @ 0.005/frame — same as before
 
-      const fadePlane = new THREE.Mesh(
-        new THREE.PlaneGeometry(30, 30),
-        fadeMaterial
-      );
-      fadePlane.position.set(0, 0, 5); // in front of the camera
-      scene.add(fadePlane);
+      // Hint text: pulses in/out after the reveal, dismissed on first mousedown/touch.
+      // Uses the Web Animations API so the pulse is entirely self-contained in JS —
+      // no CSS class resolution or Tailwind purge concerns.
+      let hintVisible = false;
+      let hintDismissed = false;
+      let hintStartTimer: ReturnType<typeof setTimeout> | null = null;
+      let hintAnimation: Animation | null = null;
+
+      const dismissHint = () => {
+        if (hintDismissed || !hintVisible) return;
+        hintDismissed = true;
+        hintAnimation?.cancel();
+        if (hintRef.current) {
+          hintRef.current.style.display = 'none';
+        }
+      };
+
+      // Listen on mousedown + touchstart so dragging dismisses it immediately
+      window.addEventListener('mousedown', dismissHint);
+      window.addEventListener('touchstart', dismissHint);
+
+      let fadeEndTimer: ReturnType<typeof setTimeout> | null = null;
+      const fadeStartTimer = setTimeout(() => {
+        if (overlayRef.current) {
+          overlayRef.current.style.transition = `opacity ${fadeDurationMs}ms ease`;
+          overlayRef.current.style.opacity = '0';
+        }
+        fadeEndTimer = setTimeout(() => {
+          if (overlayRef.current) {
+            // Remove from layout entirely so it never intercepts pointer events
+            overlayRef.current.style.display = 'none';
+          }
+          // Wait 1s after the strip is revealed, then start the pulse loop
+          hintStartTimer = setTimeout(() => {
+            if (!hintDismissed && hintRef.current) {
+              hintVisible = true;
+              hintRef.current.style.display = 'flex';
+              // Keyframes mirror the old CSS: invisible → full → hold → invisible
+              hintAnimation = hintRef.current.animate(
+                [
+                  { opacity: 0, offset: 0 },
+                  { opacity: 0.8, offset: 0.3 },
+                  { opacity: 0.8, offset: 0.7 },
+                  { opacity: 0, offset: 1   },
+                ],
+                { duration: 4500, iterations: Infinity, easing: 'linear' }
+              );
+            }
+          }, 1000);
+        }, fadeDurationMs);
+      }, fadeDelayMs);
 
 
       // Loading the duck
@@ -391,15 +439,7 @@ const ThreeScene: React.FC = () => {
       };
 
       // Scene rendering function that moves the duck
-      const fadeSpeed = 0.005;
-      let delay = 100;
       const renderScene = () => {
-        if (fadeMaterial.opacity > 0 && delay < 0) {
-          fadeMaterial.opacity -= fadeSpeed;
-          fadeMaterial.opacity = Math.max(fadeMaterial.opacity, 0);
-        } else {
-          delay -= 1;
-        }
         if (duck && doubledCenterPositions.length > 1) {
           const delta = clock.getDelta();
           pathIndex += speed * delta;
@@ -475,13 +515,64 @@ const ThreeScene: React.FC = () => {
 
       window.addEventListener('resize', handleResize);
 
-      // Clean up the event listener when the component is unmounted
+      // Clean up when the component is unmounted
       return () => {
+        clearTimeout(fadeStartTimer);
+        if (fadeEndTimer !== null) clearTimeout(fadeEndTimer);
+        if (hintStartTimer !== null) clearTimeout(hintStartTimer);
+        hintAnimation?.cancel();
         window.removeEventListener('resize', handleResize);
+        window.removeEventListener('mousedown', dismissHint);
+        window.removeEventListener('touchstart', dismissHint);
       };
       
     }
   }, []);
-  return <div ref={containerRef} />;
+  return (
+    <div style={{ position: 'relative' }}>
+      <div ref={containerRef} />
+      {/* CSS overlay — covers the canvas during fade-in.
+          position:fixed keeps it glued to the viewport so orbiting
+          the camera never reveals anything behind it.
+          Once the fade completes it is removed from layout (display:none)
+          so it can never block pointer events to the canvas below. */}
+      <div
+        ref={overlayRef}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundColor: '#163832',
+          zIndex: 10,
+        }}
+      />
+      {/* Interaction hint — fades in after the reveal, dismissed on first touch/click.
+          pointerEvents:none so it never intercepts input to the canvas below. */}
+      <div
+        ref={hintRef}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          display: 'none',       /* shown via JS when ready */
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 9,
+          pointerEvents: 'none',
+          paddingTop: 100
+        }}
+      >
+        <p
+          style={{
+            color: 'white',
+            fontFamily: 'var(--font-geist-sans), Arial, sans-serif',
+            fontSize: '0.875rem',
+            letterSpacing: '0.08em',
+            userSelect: 'none',
+          }}
+        >
+          Interact
+        </p>
+      </div>
+    </div>
+  );
 };
 export default ThreeScene;
