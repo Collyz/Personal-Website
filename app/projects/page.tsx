@@ -23,7 +23,7 @@ export default function ProjectContent() {
                                 'Next.js', 'HTML Canvas', 'Tailwind', 'Google Auth', 'Godot 4', 'GDScript', 'Theory of Computation'
                                 ]
                             }>
-                            <Image src="/FA_Designer_godot.png"
+                            <Image src="/images/FA_Designer_godot.png"
                                 alt="Finite Automata Designer in Godot"
                                 width={800}
                                 height={600}
@@ -45,9 +45,9 @@ export default function ProjectContent() {
                                 ]
                             }>
                             <div className='flex items-center m-2 mb-2'>
-                                <img src="images/gnomy_leaderboard.png" alt="Gnomy leaderboard screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
+                                <img src="/images/gnomy_leaderboard.png" alt="Gnomy leaderboard screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
                                 <span className='px-2'></ span>
-                                <img src="images/gnomy_gameplay.png" alt="Gnomy gameplay screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
+                                <img src="/images/gnomy_gameplay.png" alt="Gnomy gameplay screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
                             </div>
                         </ProjectCard>,
 
@@ -63,7 +63,7 @@ export default function ProjectContent() {
                                 'JavaScript', 'Bootstrap', 'Theory of Computation', 'Vite', 'p5.js'
                                 ]
                             }>
-                            <Image src="/toc_final_proj.png" 
+                            <Image src="/images/toc_final_proj.png"
                                 alt="Theory of Computation Final Project Example Deterministic FA that accepts all strings starting with 1" 
                                 width={800}
                                 height={600}
@@ -85,7 +85,7 @@ export default function ProjectContent() {
                                 'Python', 'PyTorch', 'Computer Vision', 'DCGAN', 'Image Generation', 'Convolutional Neural Network'
                                 ]
                             }>
-                            <Image src="/2000_epoch_and_imgs_DCGAN_ham_126_mins_imgs.png" 
+                            <Image src="/images/2000_epoch_and_imgs_DCGAN_ham_126_mins_imgs.png"
                             alt="Hamster images generated from 2k epochs taking 126 images" 
                             width={800}
                             height={600}
@@ -107,7 +107,7 @@ export default function ProjectContent() {
                                 'Python', 'Blender', 'Calculus 3', '3D Printing', 'Research'
                                 ]
                             }> 
-                            <Image src="/lake-fred-triangulation.png" 
+                            <Image src="/images/lake-fred-triangulation.png"
                                 alt="2D Delauney Triangulation on Lake Fred Geospatial points"
                                 width={800}
                                 height={600}
@@ -137,7 +137,7 @@ export default function ProjectContent() {
                                 'PHP', 'JavaScript', 'MySQL', 'Bootstrap', 'WAMP'
                                 ]
                             }>
-                            <Image src="/syntax-type-landing.png" 
+                            <Image src="/images/syntax-type-landing.png"
                             alt="Syntax Type landing page"
                             width={800}
                             height={600}
@@ -170,7 +170,7 @@ export default function ProjectContent() {
                                 'Java', 'JavaFX', 'MySQL', 'SceneBuilder', 'MVC'
                                 ]
                             }>
-                            <Image src="/beauty-in-you-login.png"
+                            <Image src="/images/beauty-in-you-login.png"
                             alt="Beauty In You Desktop Inventory Application login screen"
                             width={800}
                             height={600}
