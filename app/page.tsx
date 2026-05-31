@@ -1,5 +1,4 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import FadeInText from '../components/FadeInText';
 import ThreeScene from '@/components/MobiusStrip';
 
