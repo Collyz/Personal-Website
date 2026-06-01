@@ -1,37 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import FadeInText from '../components/FadeInText';
 import ThreeScene from '@/components/MobiusStrip';
 
 export default function HomeContent() {
-
-  // // HINT STATE
-  // const [showHint, setShowHint] = useState(false);
-  // const interactedKey = 'mobius-interacted';
-
-  // useEffect(() => {
-  //   const hasInteracted = localStorage.getItem(interactedKey);
-
-  //   if (hasInteracted) return;
-
-  //   const timer = setTimeout(() => {
-  //     setShowHint(true);
-  //   }, 3000);
-
-  //   const handleFirstInteraction = () => {
-  //     localStorage.setItem(interactedKey, 'true');
-  //     setShowHint(false);
-
-  //     window.removeEventListener('pointerdown', handleFirstInteraction);
-  //   };
-
-  //   window.addEventListener('pointerdown', handleFirstInteraction);
-
-  //   return () => {
-  //     clearTimeout(timer);
-  //     window.removeEventListener('pointerdown', handleFirstInteraction);
-  //   };
-  // }, []);
 
   return (
     <div>

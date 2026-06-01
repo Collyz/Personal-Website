@@ -1,13 +1,19 @@
 'use client'
 
 import FadeInText from '@/components/FadeInText';
+import PDFViewer from '@/components/PDFViewer';
 
 export default function ResumeContent() {
     return (
-        <div>
+        <div 
+        className='flex flex-col'
+        >
             <main className="flex flex-col items-center">
                 <FadeInText text="Resume" className='pt-16' additative={true}/>
-                <iframe title="Mohammed Mowla's Resume" className="min-w-full min-h-screen md:px-24 md:py-16 py-12" src="https://drive.google.com/file/d/1LRT8oyhgvS-UE3zIvmz-OCEe5cCtdu9D/preview" allow="autoplay"></iframe>
+                <PDFViewer
+                    url="/resume/Resume_2_page_MM.pdf"
+                    className='w-full max-w-3xl px-0 sm:px-5 py-8'
+                />
             </main>
 
         </div>
