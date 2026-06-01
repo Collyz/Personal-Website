@@ -1,7 +1,7 @@
 'use client'
 
 import FadeInText from '@/components/FadeInText';
-import { div } from 'motion/react-client';
+import PDFViewer from '@/components/PDFViewer';
 
 export default function ResumeContent() {
     return (
@@ -10,15 +10,10 @@ export default function ResumeContent() {
         >
             <main className="flex flex-col items-center">
                 <FadeInText text="Resume" className='pt-16' additative={true}/>
-                <div style={{width: '100%'}} className='flex'>
-                    <canvas
-                    id='resume-canvas' 
-                    className='justify-center flex-1 px-5'
-                    />
-                </div>
-                
-
-                {/* <iframe title="Mohammed Mowla's Resume" className="min-w-full min-h-screen md:px-24 md:py-16 py-12" src="https://drive.google.com/file/d/1LRT8oyhgvS-UE3zIvmz-OCEe5cCtdu9D/preview" allow="autoplay"></iframe> */}
+                <PDFViewer
+                    url="/resume/Resume_2_page_MM.pdf"
+                    className='w-full max-w-3xl px-0 sm:px-5 py-8'
+                />
             </main>
 
         </div>
