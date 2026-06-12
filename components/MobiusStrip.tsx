@@ -102,7 +102,7 @@ const ThreeScene: React.FC = () => {
       let duck: THREE.Group | null = null;
       // For duck animations
       let pathIndex = 0;
-      let speed = 35;
+      const speed = 35;
       let duckBoundingHeight = 0;
       // Load the duck into the scene, color each body part
       new OBJLoader().load('/models/Rubber_Derpy.obj', obj => {
@@ -175,11 +175,11 @@ const ThreeScene: React.FC = () => {
         }
       }
       // Adding the dot cloud to the scene
-      const mobiusGeo = new THREE.BufferGeometry();
-      mobiusGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-      mobiusGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-      const mobiusMat = new THREE.PointsMaterial({size: 0.08,vertexColors: true});
-      const mobiusPoints = new THREE.Points(mobiusGeo, mobiusMat);
+      // const mobiusGeo = new THREE.BufferGeometry();
+      // mobiusGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      // mobiusGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      // const mobiusMat = new THREE.PointsMaterial({size: 0.08,vertexColors: true});
+      // const mobiusPoints = new THREE.Points(mobiusGeo, mobiusMat);
       // scene.add(mobiusPoints);
 
       const vertices: THREE.Vector3[][] = []; // 2D grid [u][v]
@@ -466,7 +466,7 @@ const ThreeScene: React.FC = () => {
             .normalize()
             .multiplyScalar(-1); // flip direction
           const N = new THREE.Vector3().lerpVectors(doubledNormals[idx0], doubledNormals[idx1], t).normalize();
-          const B = new THREE.Vector3().lerpVectors(doubledBinormals[idx0], doubledBinormals[idx1], t).normalize();
+          // const B = new THREE.Vector3().lerpVectors(doubledBinormals[idx0], doubledBinormals[idx1], t).normalize();
 
           // Re-orthonormalize ONCE (prevents drift but does NOT introduce noise)
           const Tn = T.clone().normalize();

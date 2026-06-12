@@ -11,7 +11,7 @@ export default function ResumeContent() {
             <main className="flex flex-col items-center">
                 <FadeInText text="Resume" className='pt-16' additative={true}/>
                 <PDFViewer
-                    url="/resume/Resume_2_page_MM.pdf"
+                    url="/resume/Resume_1_MM.pdf"
                     className='w-full max-w-3xl px-0 sm:px-5 py-8'
                 />
             </main>
