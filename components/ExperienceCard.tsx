@@ -24,7 +24,7 @@ export function ExperienceCard (props: ExperienceProp) {
     line = <p className='my-5'/>
   }
   return (
-    <div className='px-12 md:px-24 lg:px-36 max-w-[1500px]'>
+    <div className='px-12 md:px-24 lg:px-36 max-w-[1200px]'>
       <div className='group/outer hover:border-[0px] hover:rounded-md p-5 hover:bg-[#132d20b3]'>
         <p className='text-gray-400 text-sm pb-1'>
           {props.date}
