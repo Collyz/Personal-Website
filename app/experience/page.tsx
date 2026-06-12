@@ -17,15 +17,15 @@ export default function ExperienceContent() {
                             company='LS Technologies'
                             role='Software Automation – A.M.M.S.'
                             date="September 2024 - Present"
-                            description="Develop and maintain automated regression test suites in Python using
+                            description="Developed and maintained automated regression test suites in Python using
                             Selenium and Appium for web and iOS applications, increasing overall test coverage
-                            by 88% and safeguarding core business processes. Engineer CI/CD pipelines that
-                            automate build retrieval, installation, and test environment configuration,
-                            eliminating manual setup across up to 15 daily release builds. Build internal
+                            by 88% and safeguarding core business processes. Engineered CI/CD pipelines that
+                            automated build retrieval, installation, and test environment configuration,
+                            eliminating manual setup across up to 15 daily release builds. Built internal
                             automation tooling integrated with Jira to generate reporting matrices that track
-                            team assignments, status, and progress. Design black-box test cases modeled on
+                            team assignments, status, and progress. Designed black-box test cases modeled on
                             real-world user scenarios across a suite of interconnected enterprise applications,
-                            and collaborate with Subject Matter Experts (SMEs) and development teams within an
+                            and collaborated with Subject Matter Experts (SMEs) and development teams within an
                             Agile/Scrum environment to identify, document, and resolve software defects."
                             show_line = {false}
                             href='https://lstechllc.com/'
@@ -40,7 +40,7 @@ export default function ExperienceContent() {
                             title='Computer Science Intern'
                             company='Federal Aviation Administration'
                             role='A.M.M.S. Testing and Automation'
-                            date="June - August 2024"
+                            date="June 2024 - August 2024"
                             description="Optimized an automated iOS regression test suite, reducing automation
                             run times by 33% through test script refactoring and simulator configuration tuning.
                             Expanded manual and automated test coverage of end-to-end user workflows in alignment
@@ -82,7 +82,7 @@ export default function ExperienceContent() {
                             title='Computer Science Intern'
                             company='Federal Aviation Administration'
                             role='A.M.M.S. Testing and Automation'
-                            date="June - August 2023"
+                            date="June 2023 - August 2023"
                             description="Established a regression test suite in Java using Appium to automate
                             testing of an iOS mobile application, ensuring the continued functionality of
                             critical user scenarios. Deployed and benchmarked the Simulated Driver Radar
