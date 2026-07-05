@@ -63,7 +63,7 @@ export function ProjectCard(props  : ProjectCardProp ) {
           {props.date}
         </p>
         {link}
-        <div className='flex flex-col sm:flex-row'>
+        <div className='flex flex-col sm:flex-row items-center'>
           {props.children}
           <p className="text-sm lg:text-base sm:px-5">{props.description}</p>  
           

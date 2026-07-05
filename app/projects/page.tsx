@@ -15,16 +15,18 @@ export default function ProjectContent() {
                             key={0}
                             title={'Finite Automata Designer'} 
                             date={'February 2025 - Present'} 
-                            description={'Recreation of the \'Theory of Computation\' final project using the Godot 4.0 engine, featuring enhanced visuals, improved state highlighting, and string acceptance animations. Currently being rebuilt from the ground up in Next.js for improved accessibility. Planned features include saving finite automata and export/print functionality.'} 
+                            description={
+                                'Web-based finite automata designer built with Next.js, TypeScript, and React, evolved from a \'Theory of Computation\' final project. Features interactive HTML5 Canvas editors for designing DFAs and NFAs, user authentication with Supabase and Google OAuth, cloud saving of automata, and export to LaTeX and SVG. Planned features include string acceptance animations and print functionality. (Originally prototyped in Godot 4.0, now rebuilt as a full web app)'
+                            } 
                             href={'https://github.com/Collyz/FiniteAutomataDesigner'} 
                             show_line={false} 
                             status={false}
                             skills={[
-                                'Next.js', 'HTML Canvas', 'Tailwind', 'Google Auth', 'Godot 4', 'GDScript', 'Theory of Computation'
+                                'Next.js', 'React', 'Supabase', 'PostgreSQL', 'NextAuth.js', 'Google OAuth', 'HTML5 Canvas','Node.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Rollup', 'ESLint', 'Git', 'GitHub', 'Theory of Computation'
                                 ]
                             }>
-                            <Image src="/images/FA_Designer_godot.png"
-                                alt="Finite Automata Designer in Godot"
+                            <Image src="/images/FA_Designer.png"
+                                alt="Finite Automata Designer"
                                 width={800}
                                 height={600}
                                 className="mb-3 rounded-3xl object-cover sm:max-w-1/2 max-w-full"
@@ -45,16 +47,29 @@ export default function ProjectContent() {
                                 ]
                             }>
                             <div className='flex items-center m-2 mb-2'>
-                                <img src="/images/gnomy_leaderboard.png" alt="Gnomy leaderboard screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
-                                <span className='px-2'></ span>
-                                <img src="/images/gnomy_gameplay.png" alt="Gnomy gameplay screenshot" className='max-w-1/2 object-cover rounded-3xl'/>
+                                <Image 
+                                src="/images/gnomy_leaderboard.png" 
+                                alt="Gnomy leaderboard screenshot" 
+                                width={500}
+                                height={500}
+                                className='max-w-1/2 object-cover rounded-3xl'
+                                />
+                                <span className='px-2'
+                                ></ span>
+                                <Image 
+                                src="/images/gnomy_gameplay.png" 
+                                alt="Gnomy gameplay screenshot" 
+                                width={500}
+                                height={500}
+                                className='max-w-1/2 object-cover rounded-3xl'
+                                />
                             </div>
                         </ProjectCard>,
 
                         <ProjectCard 
                             key={2}
                             title={'Theory Of Computation Final Project'} 
-                            date={'ADD'} 
+                            date={'April-May 2024'} 
                             description={'Final project for Math-4472: Theory of Computation. A web-based tool for designing and testing Deterministic Finite Automata (DFA), allowing manual construction of automata and string input for parsing. Built with P5.js, the project focused on demonstrating core DFA functionality within a user-friendly interface. Current limitations include lack of support for non-determinism, step-by-step string parsing animations, and limited arrow rendering for bidirectional transitions.'} 
                             href={'https://collyz.github.io/Theory_Of_Computation_Final_Project/'} 
                             show_line={false} 
