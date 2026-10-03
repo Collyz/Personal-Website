@@ -11,7 +11,7 @@ export default function HomeContent() {
         {/* Header */}
         <div className="flex items-center justify-center sm:flex-row sm:items-end gap-2 px-16 lg:px-32">
           <FadeInText
-            text="Hi, I'm Mohammed, a Computer Scientist at LS Technologies"
+            text="Hi, I'm Mohammed, a Software Engineer"
             className="pt-16"
             additative={true}
           />
